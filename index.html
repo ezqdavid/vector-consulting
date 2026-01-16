@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Vector Consulting — Notion-style Deck</title>
+  <title>Vector Consulting — Minimal Deck</title>
 
   <style>
     :root{
@@ -25,10 +25,10 @@
       --topbar-h:56px;
       --topbar-h-mobile:52px;
 
-      --pad:40px;
+      --pad:38px;
       --pad-sm:18px;
 
-      --h1:clamp(30px, 4.2vw, 46px);
+      --h1:clamp(30px, 4.2vw, 44px);
       --p:15px;
     }
 
@@ -69,7 +69,7 @@
       display:flex;
       align-items:center;
       gap: 10px;
-      min-width: 220px;
+      min-width: 240px;
       overflow:hidden;
     }
 
@@ -87,10 +87,7 @@
       letter-spacing: -0.2px;
       position: relative;
     }
-    .logo::after{
-      content:"V";
-      transform: translateY(-0.2px);
-    }
+    .logo::after{ content:"V"; transform: translateY(-0.2px); }
 
     .name{
       display:flex;
@@ -140,62 +137,6 @@
       color: var(--text);
     }
 
-    .menu{
-      display:none;
-      position: relative;
-    }
-    .menu summary{
-      list-style: none;
-      cursor:pointer;
-      display:flex;
-      align-items:center;
-      gap: 8px;
-      padding: 7px 10px;
-      border-radius: 999px;
-      border: 1px solid var(--line2);
-      background: rgba(17,17,17,.02);
-      color: var(--text);
-      font-size: 12px;
-      font-weight: 650;
-      user-select:none;
-    }
-    .menu summary::-webkit-details-marker{ display:none; }
-    .hamburger{
-      width: 16px; height: 12px;
-      position: relative;
-      display:inline-block;
-    }
-    .hamburger span{
-      position:absolute; left:0; right:0;
-      height:2px; background:rgba(17,17,17,.72);
-      border-radius: 999px;
-    }
-    .hamburger span:nth-child(1){ top:0; }
-    .hamburger span:nth-child(2){ top:5px; opacity:.9; }
-    .hamburger span:nth-child(3){ top:10px; opacity:.85; }
-
-    .menu-panel{
-      position:absolute;
-      right: 0;
-      top: calc(100% + 8px);
-      width: 240px;
-      border-radius: 14px;
-      border: 1px solid var(--line2);
-      background: var(--paper);
-      box-shadow: 0 10px 22px rgba(17,17,17,.10);
-      overflow:hidden;
-    }
-    .menu-panel a{
-      display:block;
-      padding: 10px 12px;
-      font-size: 13px;
-      color: var(--text);
-      border-bottom: 1px solid var(--line2);
-      background: #fff;
-    }
-    .menu-panel a:last-child{ border-bottom: 0; }
-    .menu-panel a:hover{ background: rgba(17,17,17,.03); }
-
     .deck{
       height: calc(100vh - var(--topbar-h));
       overflow-y: auto;
@@ -231,7 +172,7 @@
       padding: var(--pad);
       display:flex;
       flex-direction:column;
-      gap: 18px;
+      gap: 14px;
       overflow:auto;
     }
 
@@ -268,27 +209,34 @@
     .subtitle{
       margin: 10px 0 0;
       font-size: var(--p);
-      line-height: 1.55;
+      line-height: 1.5;
       color: var(--muted);
-      max-width: 72ch;
+      max-width: 60ch;
     }
 
-    .meta{
-      text-align:right;
-      color: var(--muted2);
-      font-size: 12px;
-      display:flex;
-      flex-direction:column;
-      gap: 6px;
-      min-width: 330px;
-    }
-    .meta b{ color: var(--text); font-weight: 800; }
     .mono{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+
+    .chips{
+      margin-top: 10px;
+      display:flex;
+      flex-wrap:wrap;
+      gap: 8px;
+    }
+    .chip{
+      font-size:12px;
+      border: 1px solid var(--line2);
+      border-radius:999px;
+      padding:7px 10px;
+      background: rgba(17,17,17,.02);
+      color: var(--muted);
+      font-weight:650;
+    }
+    .chip b{ color: var(--text); font-weight:800; }
 
     .grid-2{
       display:grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap: 16px;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
       flex: 1;
       min-height: 0;
     }
@@ -296,7 +244,7 @@
     .card{
       border: 1px solid var(--line2);
       border-radius: var(--radius-sm);
-      padding: 16px;
+      padding: 14px;
       background: #fff;
     }
     .card h3{
@@ -308,21 +256,46 @@
       font-weight: 800;
     }
 
+    .tiles{
+      margin-top: 10px;
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 10px;
+    }
+    .tile{
+      border:1px solid var(--line2);
+      border-radius: 12px;
+      padding: 12px;
+      background:#fff;
+    }
+    .tile .t{
+      margin:0 0 6px;
+      font-weight:850;
+      font-size:14px;
+      letter-spacing:-0.2px;
+    }
+    .tile .d{
+      margin:0;
+      font-size:13px;
+      line-height:1.35;
+      color: var(--muted);
+    }
+
     .bullets{
-      margin: 12px 0 0;
+      margin: 10px 0 0;
       padding: 0;
       list-style:none;
       display:flex;
       flex-direction:column;
-      gap: 10px;
+      gap: 8px;
     }
     .bullets li{
       display:flex;
       gap: 10px;
-      font-size: 14px;
-      line-height: 1.42;
+      font-size: 13px;
+      line-height: 1.35;
+      color: var(--text);
     }
-
     .check{
       width:18px; height:18px;
       border-radius:6px;
@@ -342,140 +315,6 @@
       transform: rotate(-45deg);
     }
 
-    .chips{
-      margin-top: 12px;
-      display:flex;
-      flex-wrap:wrap;
-      gap: 8px;
-    }
-    .chip{
-      font-size:12px;
-      border: 1px solid var(--line2);
-      border-radius:999px;
-      padding:7px 10px;
-      background: rgba(17,17,17,.02);
-      color: var(--muted);
-      font-weight:650;
-    }
-    .chip b{ color: var(--text); font-weight:800; }
-
-    .callout{
-      margin-top: 12px;
-      border:1px solid var(--line2);
-      background: rgba(37,99,235,.06);
-      border-radius: 12px;
-      padding: 12px;
-      display:flex;
-      gap: 10px;
-      align-items:flex-start;
-    }
-    .callout .mark{
-      width:24px; height:24px;
-      border-radius: 8px;
-      background: rgba(37,99,235,.12);
-      border: 1px solid rgba(37,99,235,.20);
-      color: var(--accent);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-weight: 900;
-      flex:0 0 auto;
-    }
-    .callout p{
-      margin:0;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.45;
-    }
-
-    .metrics{
-      margin-top: 12px;
-      display:grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
-      gap: 10px;
-    }
-    .metric{
-      border:1px solid var(--line2);
-      border-radius: 12px;
-      padding: 12px;
-      background:#fff;
-    }
-    .metric .val{
-      font-weight:900;
-      font-size: 18px;
-      letter-spacing:-0.3px;
-    }
-    .metric .lbl{
-      margin-top:4px;
-      font-size:12px;
-      color: var(--muted2);
-    }
-
-    .tiles{
-      margin-top: 12px;
-      display:grid;
-      grid-template-columns: repeat(2, minmax(0,1fr));
-      gap: 12px;
-    }
-    .tile{
-      border:1px solid var(--line2);
-      border-radius: 12px;
-      padding: 12px;
-      background:#fff;
-    }
-    .tile .t{
-      margin:0 0 6px;
-      font-weight:850;
-      font-size:14px;
-      letter-spacing:-0.2px;
-    }
-    .tile .d{
-      margin:0;
-      font-size:13px;
-      line-height:1.45;
-      color: var(--muted);
-    }
-
-    .steps{
-      margin-top: 12px;
-      display:flex;
-      flex-direction:column;
-      gap: 10px;
-    }
-    .step{
-      border:1px solid var(--line2);
-      border-radius: 12px;
-      padding: 12px;
-      background:#fff;
-      display:flex;
-      gap: 12px;
-      align-items:flex-start;
-    }
-    .step .n{
-      width:28px; height:28px;
-      border-radius: 10px;
-      background: var(--accent-soft);
-      border: 1px solid rgba(37,99,235,.18);
-      color: var(--accent);
-      font-weight: 900;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      flex:0 0 auto;
-    }
-    .step strong{
-      display:block;
-      font-size:14px;
-      margin-bottom:3px;
-      font-weight:850;
-    }
-    .step span{
-      display:block;
-      font-size:13px;
-      color: var(--muted);
-      line-height:1.45;
-    }
-
     .footer{
       margin-top:auto;
       padding-top:10px;
@@ -492,20 +331,11 @@
       .deck{ height: calc(100vh - var(--topbar-h-mobile)); }
       .slide{ scroll-margin-top: calc(var(--topbar-h-mobile) + 10px); }
 
-      .nav{ display:none; }
-      .menu{ display:block; }
-
       .canvas{ aspect-ratio: auto; max-height:none; }
       .inner{ padding: var(--pad-sm); }
       .grid-2{ grid-template-columns: 1fr; }
       .tiles{ grid-template-columns: 1fr; }
-      .metrics{ grid-template-columns: 1fr; }
-      .meta{ display:none; }
-
-      .title{
-        font-size: clamp(26px, 7vw, 34px);
-        letter-spacing: -0.5px;
-      }
+      .title{ font-size: clamp(26px, 7vw, 34px); }
     }
 
     @media (prefers-reduced-motion: reduce){
@@ -519,12 +349,6 @@
       .canvas{ width:100%; aspect-ratio:16/9; border-radius:0; max-height:none; }
       *{ -webkit-print-color-adjust: exact; print-color-adjust: exact; }
     }
-
-    a:focus-visible, button:focus-visible, summary:focus-visible{
-      outline: 2px solid rgba(37,99,235,.45);
-      outline-offset: 2px;
-      border-radius: 10px;
-    }
   </style>
 </head>
 
@@ -536,35 +360,16 @@
         <div class="logo"></div>
         <div class="name">
           <b>Vector Consulting</b>
-          <span>Automatización · Control Tower · Procesos + IA aplicada</span>
+          <span>Operación · Automatización · Procesos + IA aplicada</span>
         </div>
       </div>
 
       <nav class="nav" aria-label="Navegación">
-        <a href="#s1">Portada</a>
-        <a href="#s2">Alcance</a>
-        <a href="#s3">Cómo se ve</a>
-        <a href="#s4">Proyectos</a>
-        <a href="#s5">Quiénes somos</a>
-        <a href="#s6">Próximos pasos</a>
+        <a href="#s1">Soluciones</a>
+        <a href="#s2">Experiencia</a>
+        <a href="#s3">Quiénes somos</a>
+        <a href="#s4">Próximos pasos</a>
       </nav>
-
-      <details class="menu">
-        <summary>
-          <span class="hamburger" aria-hidden="true">
-            <span></span><span></span><span></span>
-          </span>
-          Menú
-        </summary>
-        <div class="menu-panel" role="menu" aria-label="Menú">
-          <a href="#s1">Portada</a>
-          <a href="#s2">Alcance</a>
-          <a href="#s3">Cómo se ve</a>
-          <a href="#s4">Proyectos</a>
-          <a href="#s5">Quiénes somos</a>
-          <a href="#s6">Próximos pasos</a>
-        </div>
-      </details>
     </div>
   </header>
 
@@ -576,74 +381,64 @@
         <div class="inner">
           <div class="header">
             <div>
-              <div class="kicker"><span class="dot"></span>Paquetes cerrados · Delivery en semanas</div>
-              <div class="title">Automatización operativa con impacto medible</div>
+              <div class="kicker"><span class="dot"></span>Operación general · Paquetes cerrados</div>
+              <div class="title">Automatización con foco en operación</div>
               <p class="subtitle">
-                En Vector Consulting implementamos automatizaciones <strong>end-to-end</strong> para logística
-                (RPA + integraciones + tablero + alertas) con foco en reducir tareas manuales, errores y tiempos de ciclo.
-                Entregamos en producción con <strong>trazabilidad, runbook y handover</strong>.
+                Diseñamos e implementamos automatizaciones para reducir trabajo manual, mejorar trazabilidad y acelerar decisiones.
+                Entrega pragmática, lista para operar.
               </p>
 
               <div class="chips">
                 <span class="chip"><b>Quick Win</b> 3–6 semanas</span>
-                <span class="chip"><b>USD</b> 3K–5K (costo fijo)</span>
-                <span class="chip"><b>Entrega</b> bot + tablero + alertas</span>
+                <span class="chip"><b>USD</b> 3K–5K fijo</span>
+                <span class="chip"><b>Datos sensibles</b> OK</span>
               </div>
-            </div>
-
-            <div class="meta">
-              <div><b>Vector Consulting</b> — 2 socios · experiencia corporativa</div>
-              <div><b>Contacto</b> <a class="mono" href="mailto:ezqdavid@outlook.com">ezqdavid@outlook.com</a></div>
-              <div><b>LinkedIn</b> <span class="mono">Vector Consulting</span></div>
-              <div><b>Celular</b> <a class="mono" href="tel:+5491151212712">+54 9 11 5121 2712</a></div>
             </div>
           </div>
 
           <div class="grid-2">
             <div class="card">
-              <h3>Qué resolvemos (logística / operación)</h3>
-              <ul class="bullets">
-                <li><span class="check"></span><span><strong>Conciliaciones</strong> manuales (movimientos, stock, envíos, entregas).</span></li>
-                <li><span class="check"></span><span><strong>Procesos con excepciones</strong> sin reglas consistentes ni evidencia.</span></li>
-                <li><span class="check"></span><span><strong>Falta de visibilidad</strong>: nadie sabe el estado real del proceso.</span></li>
-                <li><span class="check"></span><span><strong>Operación “Excel + mails”</strong> que no escala y genera reprocesos.</span></li>
-              </ul>
-
-              <div class="callout">
-                <div class="mark">i</div>
-                <p>
-                  En una reunión de 45 min identificamos el proceso candidato y devolvemos una propuesta con:
-                  <strong>alcance cerrado</strong>, entregables, cronograma, riesgos y <strong>costo fijo</strong>.
-                </p>
+              <h3>Soluciones propuestas</h3>
+              <div class="tiles">
+                <div class="tile">
+                  <p class="t">Automatización operativa</p>
+                  <p class="d">Procesos repetitivos con reglas y excepciones.</p>
+                </div>
+                <div class="tile">
+                  <p class="t">Reporting automatizado</p>
+                  <p class="d">KPIs listos para decidir, sin tareas manuales.</p>
+                </div>
+                <div class="tile">
+                  <p class="t">Integraciones DB / API</p>
+                  <p class="d">Flujos robustos conectados a fuentes confiables.</p>
+                </div>
+                <div class="tile">
+                  <p class="t">IA aplicada (cuando suma)</p>
+                  <p class="d">Asistentes, clasificación o extracción con control.</p>
+                </div>
               </div>
             </div>
 
             <div class="card">
-              <h3>Qué entregamos (operable)</h3>
-              <div class="metrics">
-                <div class="metric"><div class="val">Bot</div><div class="lbl">automatización productiva</div></div>
-                <div class="metric"><div class="val">Control</div><div class="lbl">logs, evidencia, auditoría</div></div>
-                <div class="metric"><div class="val">Tower</div><div class="lbl">tablero + alertas</div></div>
-              </div>
+              <h3>Qué entregamos</h3>
+              <ul class="bullets">
+                <li><span class="check"></span><span><strong>Automatización productiva</strong> (alcance cerrado).</span></li>
+                <li><span class="check"></span><span><strong>Monitoreo + alertas</strong> para operación estable.</span></li>
+                <li><span class="check"></span><span><strong>Trazabilidad</strong> (logs y evidencia).</span></li>
+                <li><span class="check"></span><span><strong>Runbook</strong> para handover.</span></li>
+              </ul>
 
               <div class="chips">
-                <span class="chip"><b>UAT</b> guiado</span>
-                <span class="chip"><b>Hardening</b> + reintentos</span>
-                <span class="chip"><b>Runbook</b> + SOP</span>
-              </div>
-
-              <div class="callout" style="background: rgba(17,17,17,.03);">
-                <div class="mark" style="background: rgba(17,17,17,.06); border-color: rgba(17,17,17,.12); color: var(--text);">✓</div>
-                <p style="color: var(--muted);">
-                  No entregamos “scripts sueltos”. Entregamos una automatización <strong>estable, operable y auditable</strong>.
-                </p>
+                <span class="chip"><b>Scope</b> predecible</span>
+                <span class="chip"><b>Entrega</b> operable</span>
+                <span class="chip"><b>Transparencia</b> total</span>
               </div>
             </div>
           </div>
 
           <div class="footer">
             <div>Vector Consulting</div>
-            <div>Operación controlada, alcance cerrado</div>
+            <div>Operación primero</div>
           </div>
         </div>
       </article>
@@ -655,148 +450,117 @@
         <div class="inner">
           <div class="header">
             <div>
-              <div class="kicker"><span class="dot"></span>Alcance / Entregables</div>
-              <div class="title">Entrega operable, no solo automatización</div>
+              <div class="kicker"><span class="dot"></span>Experiencia corporativa</div>
+              <div class="title">Casos reales y proyectos de alto impacto</div>
               <p class="subtitle">
-                Diseñamos el flujo TO-BE, automatizamos donde agrega valor y dejamos el proceso
-                <strong>controlado</strong> con tablero, alertas y evidencia.
-                Implementación pensada para operar en entorno del cliente o con hosting propio.
+                Experiencia en datos, automatización, BI y productos de analítica en entornos corporativos.
               </p>
+
+              <div class="chips">
+                <span class="chip"><b>Scoring</b> 50K usuarios/mes</span>
+                <span class="chip"><b>Onboarding</b> 2 días → 1 hora</span>
+                <span class="chip"><b>RPA + BI</b> -15h/semana</span>
+              </div>
             </div>
           </div>
 
           <div class="grid-2">
             <div class="card">
-              <h3>Incluye (end-to-end)</h3>
-              <ul class="bullets">
-                <li><span class="check"></span><span><strong>Discovery</strong>: AS-IS, volumen, excepciones, riesgos y baseline.</span></li>
-                <li><span class="check"></span><span><strong>TO-BE</strong>: reglas, validaciones, controles y criterios de aceptación.</span></li>
-                <li><span class="check"></span><span><strong>Automatización</strong>: RPA + integraciones (DB / API / archivos).</span></li>
-                <li><span class="check"></span><span><strong>Control Tower</strong>: estado de corridas, tiempos, KPIs y pendientes.</span></li>
-                <li><span class="check"></span><span><strong>Alertas</strong>: fallas, reintentos, desvíos y excepciones.</span></li>
-                <li><span class="check"></span><span><strong>UAT + hardening</strong>: pruebas guiadas, logs y estabilización.</span></li>
-                <li><span class="check"></span><span><strong>Go-live</strong>: runbook + SOP + handover operativo.</span></li>
-              </ul>
-
-              <div class="chips">
-                <span class="chip"><b>Logs</b> + evidencia</span>
-                <span class="chip"><b>Monitoreo</b> + alertas</span>
-                <span class="chip"><b>Operación</b> + SOP</span>
+              <h3>Proyectos destacados</h3>
+              <div class="tiles">
+                <div class="tile">
+                  <p class="t">Scoring automático</p>
+                  <p class="d">Ofertas de crédito para 50K usuarios/mes.</p>
+                </div>
+                <div class="tile">
+                  <p class="t">Onboarding digital</p>
+                  <p class="d">Reducción de contacto de 2 días a 1 hora.</p>
+                </div>
+                <div class="tile">
+                  <p class="t">KPIs + RPA (Retail)</p>
+                  <p class="d">Reportes automatizados y accionamiento de negocio.</p>
+                </div>
+                <div class="tile">
+                  <p class="t">Control Tower operativo</p>
+                  <p class="d">Seguimiento con transparencia y trazabilidad.</p>
+                </div>
               </div>
             </div>
 
             <div class="card">
-              <h3>Paquetes (USD · costo fijo)</h3>
-              <div class="tiles">
-                <div class="tile">
-                  <p class="t">Quick Win (3–6 semanas)</p>
-                  <p class="d"><strong>USD 3K–5K</strong>. 1 proceso operativo automatizado + tablero + alertas + runbook.</p>
-                </div>
-                <div class="tile">
-                  <p class="t">Automation Pod (6–10 semanas)</p>
-                  <p class="d">2 procesos (o 1 grande + 1 soporte) con estándares y tablero consolidado.</p>
-                </div>
-                <div class="tile">
-                  <p class="t">Hosting (opcional)</p>
-                  <p class="d">Despliegue en entorno del cliente o infraestructura propia. Módulo agregable según necesidad.</p>
-                </div>
-                <div class="tile">
-                  <p class="t">Soporte mensual (opcional)</p>
-                  <p class="d">Correctivo + evolución del backlog. Priorización y mejoras continuas.</p>
-                </div>
-              </div>
+              <h3>Stack técnico</h3>
+              <ul class="bullets">
+                <li><span class="check"></span><span><strong>SQL · Python · JavaScript</strong></span></li>
+                <li><span class="check"></span><span><strong>Power BI · Tableau · SQL Server</strong></span></li>
+                <li><span class="check"></span><span><strong>ETL · APIs · Microservicios · RPA</strong></span></li>
+                <li><span class="check"></span><span><strong>IA</strong> aplicada con guardrails</span></li>
+              </ul>
 
-              <div class="callout">
-                <div class="mark">✓</div>
-                <p>
-                  Alcance cerrado = <strong>tiempo y costo predecibles</strong>.
-                  Excepciones nuevas se incorporan como backlog adicional.
-                </p>
+              <div class="chips">
+                <span class="chip"><b>Enfoque</b> estabilidad</span>
+                <span class="chip"><b>Enfoque</b> trazabilidad</span>
+                <span class="chip"><b>Enfoque</b> entrega</span>
               </div>
             </div>
           </div>
 
           <div class="footer">
             <div>Vector Consulting</div>
-            <div>Paquetes comprables, ejecución senior</div>
+            <div>Experiencia aplicada</div>
           </div>
         </div>
       </article>
     </section>
 
-    <!-- Slide 3 (NEW) -->
+    <!-- Slide 3 -->
     <section class="slide" id="s3">
       <article class="canvas">
         <div class="inner">
           <div class="header">
             <div>
-              <div class="kicker"><span class="dot"></span>Cómo se ve en la práctica</div>
-              <div class="title">Ejemplo: conciliación logística end-to-end</div>
+              <div class="kicker"><span class="dot"></span>Quiénes somos</div>
+              <div class="title">Consultoría boutique, ejecución senior</div>
               <p class="subtitle">
-                Una conciliación típica no falla por el “match”. Falla por las excepciones, la falta de reglas,
-                y la ausencia de evidencia. Nuestra entrega incorpora operación y control desde el día 1.
+                Vector Consulting está liderada por 2 socios con experiencia corporativa.
+                Nos enfocamos en delivery directo, sin burocracia.
               </p>
+
+              <div class="chips">
+                <span class="chip"><b>Delivery</b> end-to-end</span>
+                <span class="chip"><b>Scope</b> cerrado</span>
+                <span class="chip"><b>Ownership</b> completo</span>
+              </div>
             </div>
           </div>
 
           <div class="grid-2">
             <div class="card">
-              <h3>Flujo operativo</h3>
-              <div class="tiles">
-                <div class="tile">
-                  <p class="t">1) Inputs</p>
-                  <p class="d">Movimientos, stock, entregas, OT/guías, archivos y sistemas. Fuente: <strong>DB / API</strong>.</p>
-                </div>
-                <div class="tile">
-                  <p class="t">2) Validación</p>
-                  <p class="d">Checks de calidad (campos críticos, duplicados, consistencia, reglas).</p>
-                </div>
-                <div class="tile">
-                  <p class="t">3) Match + reglas</p>
-                  <p class="d">Cruces por claves y tolerancias. Casos “perfect match” vs “near match”.</p>
-                </div>
-                <div class="tile">
-                  <p class="t">4) Excepciones</p>
-                  <p class="d">Generación de pendientes accionables con evidencia, prioridad y owner.</p>
-                </div>
-              </div>
-
-              <div class="callout">
-                <div class="mark">→</div>
-                <p>
-                  El output no es un archivo: es una <strong>operación repetible</strong> con reglas, evidencia y seguimiento.
-                </p>
-              </div>
+              <h3>Cómo trabajamos</h3>
+              <ul class="bullets">
+                <li><span class="check"></span><span><strong>Alcance claro</strong> + criterios de aceptación.</span></li>
+                <li><span class="check"></span><span><strong>Entrega operable</strong> (monitoreo + alertas).</span></li>
+                <li><span class="check"></span><span><strong>Documentación</strong> (runbook + handover).</span></li>
+              </ul>
             </div>
 
             <div class="card">
-              <h3>Control Tower + Alertas</h3>
+              <h3>Security / Privacy by Design</h3>
               <ul class="bullets">
-                <li><span class="check"></span><span><strong>Estado</strong>: OK / Warning / Failed por corrida.</span></li>
-                <li><span class="check"></span><span><strong>Tiempos</strong>: duración, cuellos, SLA.</span></li>
-                <li><span class="check"></span><span><strong>KPIs</strong>: casos conciliados vs excepciones.</span></li>
-                <li><span class="check"></span><span><strong>Evidencia</strong>: logs y trazabilidad por caso.</span></li>
+                <li><span class="check"></span><span><strong>Menor privilegio</strong> (accesos mínimos).</span></li>
+                <li><span class="check"></span><span><strong>Secretos protegidos</strong> fuera del código.</span></li>
+                <li><span class="check"></span><span><strong>Logs auditables</strong> sin exposición de datos.</span></li>
               </ul>
 
               <div class="chips">
-                <span class="chip"><b>Alertas</b> por desvío</span>
-                <span class="chip"><b>Reintentos</b> controlados</span>
-                <span class="chip"><b>Auditoría</b> simple</span>
-              </div>
-
-              <div class="callout" style="background: rgba(17,17,17,.03);">
-                <div class="mark" style="background: rgba(17,17,17,.06); border-color: rgba(17,17,17,.12); color: var(--text);">i</div>
-                <p style="color: var(--muted);">
-                  Stack fiteado al cliente: <strong>Enterprise RPA</strong> (UiPath / Power Automate) o
-                  <strong>Engineering</strong> (Python + APIs). Híbrido cuando conviene.
-                </p>
+                <span class="chip"><b>Hosting</b> cliente o propio</span>
+                <span class="chip"><b>NDA</b> disponible</span>
               </div>
             </div>
           </div>
 
           <div class="footer">
             <div>Vector Consulting</div>
-            <div>Control y operación desde el diseño</div>
+            <div>Transparencia y control</div>
           </div>
         </div>
       </article>
@@ -808,217 +572,61 @@
         <div class="inner">
           <div class="header">
             <div>
-              <div class="kicker"><span class="dot"></span>Proyectos realizados</div>
-              <div class="title">Experiencia en procesos críticos (corporativo)</div>
+              <div class="kicker"><span class="dot"></span>Próximos pasos</div>
+              <div class="title">Cerramos un Quick Win</div>
               <p class="subtitle">
-                Casos reales en entornos con volumen, datos sensibles y necesidad de control.
-                En Vector priorizamos estabilidad, trazabilidad y entrega operable.
+                Kickoff de 45 minutos → propuesta cerrada en 48–72h → entrega en 3–6 semanas.
               </p>
+
+              <div class="chips">
+                <span class="chip"><b>USD</b> 3K–5K fijo</span>
+                <span class="chip"><b>Entrega</b> 1 proceso productivo</span>
+                <span class="chip"><b>Inicio</b> inmediato</span>
+              </div>
             </div>
           </div>
 
           <div class="grid-2">
             <div class="card">
-              <h3>Automatización + Datos (alto impacto)</h3>
-
+              <h3>Plan simple</h3>
               <div class="tiles">
                 <div class="tile">
-                  <p class="t">Scoring crediticio (Microcréditos)</p>
-                  <p class="d">Automatización del flujo de scoring y reglas. Diseño para operar con <strong>trazabilidad</strong> y control.</p>
+                  <p class="t">1) Kickoff</p>
+                  <p class="d">Objetivo, reglas, sistemas y riesgos.</p>
                 </div>
-
                 <div class="tile">
-                  <p class="t">Migración consultoras (Natura / Avon)</p>
-                  <p class="d">Migración operativa con validaciones, cruces y control de integridad para minimizar riesgo.</p>
+                  <p class="t">2) Propuesta</p>
+                  <p class="d">Alcance, entregables y costo fijo.</p>
                 </div>
-
                 <div class="tile">
-                  <p class="t">Control Tower operativo</p>
-                  <p class="d">Tablero de seguimiento con estado, métricas y alertas. Enfoque en visibilidad y priorización.</p>
+                  <p class="t">3) Ejecución</p>
+                  <p class="d">Build, pruebas y go-live.</p>
                 </div>
-
                 <div class="tile">
-                  <p class="t">Integraciones DB / API</p>
-                  <p class="d">Orquestación y automatización sobre fuentes confiables, reduciendo dependencia de UI frágil.</p>
+                  <p class="t">4) Operación</p>
+                  <p class="d">Monitoreo, alertas y runbook.</p>
                 </div>
-              </div>
-
-              <div class="chips">
-                <span class="chip"><b>Logística</b> / Operación</span>
-                <span class="chip"><b>DB</b> + APIs</span>
-                <span class="chip"><b>RPA</b> híbrido</span>
               </div>
             </div>
 
             <div class="card">
-              <h3>Security & Privacy by Design</h3>
+              <h3>Qué necesitamos del cliente</h3>
               <ul class="bullets">
-                <li><span class="check"></span><span><strong>Principio de menor privilegio</strong>: accesos mínimos necesarios.</span></li>
-                <li><span class="check"></span><span><strong>Secretos protegidos</strong>: credenciales fuera del código.</span></li>
-                <li><span class="check"></span><span><strong>Logs auditables</strong> sin exponer información sensible.</span></li>
-                <li><span class="check"></span><span><strong>Separación de ambientes</strong>: dev / UAT / prod según necesidad.</span></li>
-                <li><span class="check"></span><span><strong>Transparencia</strong>: documentación clara de qué se ejecuta, cuándo y con qué datos.</span></li>
+                <li><span class="check"></span><span><strong>Referente funcional</strong> (UAT).</span></li>
+                <li><span class="check"></span><span><strong>Accesos</strong> a DB/API/sistemas.</span></li>
+                <li><span class="check"></span><span><strong>Casos reales</strong> para excepciones.</span></li>
               </ul>
 
-              <div class="callout">
-                <div class="mark">✓</div>
-                <p>
-                  Trabajamos con datos sensibles y diseñamos con guardrails.
-                  Si el cliente lo requiere: <strong>NDA</strong> + despliegue en su infraestructura.
-                </p>
+              <div class="chips">
+                <span class="chip"><b>CTA</b> agendar kickoff</span>
+                <span class="chip"><b>Salida</b> propuesta 48–72h</span>
               </div>
             </div>
           </div>
 
           <div class="footer">
             <div>Vector Consulting</div>
-            <div>Corporate-grade delivery</div>
-          </div>
-        </div>
-      </article>
-    </section>
-
-    <!-- Slide 5 -->
-    <section class="slide" id="s5">
-      <article class="canvas">
-        <div class="inner">
-          <div class="header">
-            <div>
-              <div class="kicker"><span class="dot"></span>Quiénes somos</div>
-              <div class="title">Consultoría boutique, ejecución senior</div>
-              <p class="subtitle">
-                Somos 2 socios con experiencia corporativa. Entregamos rápido, con estándares operables
-                y ownership end-to-end.
-              </p>
-            </div>
-          </div>
-
-          <div class="grid-2">
-            <div class="card">
-              <h3>Socio 1</h3>
-              <ul class="bullets">
-                <li><span class="check"></span><span><strong>Automatización + Datos</strong> — diseño, implementación y operación.</span></li>
-                <li><span class="check"></span><span><strong>Entrega end-to-end</strong>: discovery, build, UAT, go-live, runbook, handover.</span></li>
-                <li><span class="check"></span><span><strong>Enfoque</strong>: estabilidad, trazabilidad y resultados medibles.</span></li>
-              </ul>
-
-              <div class="chips">
-                <span class="chip"><b>Python</b></span>
-                <span class="chip"><b>APIs</b></span>
-                <span class="chip"><b>SQL</b></span>
-                <span class="chip"><b>RPA</b></span>
-                <span class="chip"><b>Control Tower</b></span>
-              </div>
-
-              <div class="callout">
-                <div class="mark">↳</div>
-                <p>
-                  Priorizamos diseño operativo: excepciones, reintentos, alertas y evidencia.
-                </p>
-              </div>
-            </div>
-
-            <div class="card">
-              <h3>Socio 2</h3>
-              <ul class="bullets">
-                <li><span class="check"></span><span><strong>Experiencia corporativa</strong> complementaria en delivery y gestión.</span></li>
-                <li><span class="check"></span><span><strong>Enfoque</strong>: ejecución, alineación con negocio y adopción operativa.</span></li>
-                <li><span class="check"></span><span><strong>Capacidad escalable</strong>: sumamos perfiles de QA/dev según alcance.</span></li>
-              </ul>
-
-              <div class="callout" style="background: rgba(17,17,17,.03);">
-                <div class="mark" style="background: rgba(17,17,17,.06); border-color: rgba(17,17,17,.12); color: var(--text);">✓</div>
-                <p style="color: var(--muted);">
-                  Boutique no significa chico: significa <strong>ownership</strong> y delivery directo, sin burocracia.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="footer">
-            <div>Vector Consulting</div>
-            <div>2 socios · senior delivery</div>
-          </div>
-        </div>
-      </article>
-    </section>
-
-    <!-- Slide 6 -->
-    <section class="slide" id="s6">
-      <article class="canvas">
-        <div class="inner">
-          <div class="header">
-            <div>
-              <div class="kicker"><span class="dot"></span>Próximos pasos</div>
-              <div class="title">Cerramos el primer Quick Win (costo fijo)</div>
-              <p class="subtitle">
-                Flujo directo: elegimos el proceso candidato en logística, cerramos el alcance y ejecutamos.
-                Propuesta en 48–72h. Entrega en semanas.
-              </p>
-            </div>
-          </div>
-
-          <div class="grid-2">
-            <div class="card">
-              <h3>Plan en 3 pasos</h3>
-              <div class="steps">
-                <div class="step">
-                  <div class="n">1</div>
-                  <div>
-                    <strong>Kickoff (45 min)</strong>
-                    <span>Objetivo, volumen, reglas, sistemas, restricciones y riesgos. Definimos “qué es éxito”.</span>
-                  </div>
-                </div>
-
-                <div class="step">
-                  <div class="n">2</div>
-                  <div>
-                    <strong>Propuesta cerrada (48–72h)</strong>
-                    <span>Alcance, entregables, criterios de aceptación, cronograma y costo fijo.</span>
-                  </div>
-                </div>
-
-                <div class="step">
-                  <div class="n">3</div>
-                  <div>
-                    <strong>Ejecución + go-live (3–6 semanas)</strong>
-                    <span>Build, testing, UAT, hardening, runbook y estabilización.</span>
-                  </div>
-                </div>
-              </div>
-
-              <div class="chips">
-                <span class="chip"><b>Quick Win</b> USD 3K–5K</span>
-                <span class="chip"><b>Entrega</b> bot + tower + alertas</span>
-              </div>
-            </div>
-
-            <div class="card">
-              <h3>Lo que necesitamos del cliente</h3>
-              <ul class="bullets">
-                <li><span class="check"></span><span><strong>Referente funcional</strong> para validación y UAT (30–60 min/semana).</span></li>
-                <li><span class="check"></span><span><strong>Accesos</strong> a DB/API/sistemas requeridos (mínimo privilegio).</span></li>
-                <li><span class="check"></span><span><strong>Casos reales</strong> para cubrir excepciones y bordes.</span></li>
-              </ul>
-
-              <div class="callout">
-                <div class="mark">✓</div>
-                <p>
-                  Recomendación: arrancar con un proceso claro (conciliación logística) para mostrar resultado rápido
-                  y construir backlog de siguientes quick wins.
-                </p>
-              </div>
-
-              <div class="chips">
-                <span class="chip"><b>CTA</b> Agendar kickoff</span>
-                <span class="chip"><b>Salida</b> propuesta cerrada 48–72h</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="footer">
-            <div>Vector Consulting</div>
-            <div>Siguiente paso: seleccionar proceso candidato</div>
+            <div>Siguiente paso: kickoff</div>
           </div>
         </div>
       </article>
@@ -1027,13 +635,7 @@
   </main>
 
   <script>
-    // 1) cerrar menú mobile al click
-    const menu = document.querySelector('.menu');
-    document.querySelectorAll('.menu-panel a').forEach(a=>{
-      a.addEventListener('click', ()=> menu && menu.removeAttribute('open'));
-    });
-
-    // 2) navbar active state (IntersectionObserver)
+    // navbar active state
     const links = [...document.querySelectorAll('.nav a')];
     const sections = links.map(a => document.querySelector(a.getAttribute('href')));
 
