@@ -1,85 +1,211 @@
 <!doctype html>
 <html lang="es">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Vector Consulting — Minimal Deck</title>
 
   <style>
-    :root{
-      --bg:#FBFBFA;
-      --paper:#FFFFFF;
-      --text:#111111;
-      --muted:#6B6B6B;
-      --muted2:#8A8A8A;
-      --line:rgba(17,17,17,.10);
-      --line2:rgba(17,17,17,.06);
+    :root {
+      --bg: #FBFBFA;
+      --paper: #FFFFFF;
+      --text: #111111;
+      --muted: #6B6B6B;
+      --muted2: #8A8A8A;
+      --line: rgba(17, 17, 17, .10);
+      --line2: rgba(17, 17, 17, .06);
 
-      --accent:#2563EB;
-      --accent-soft:rgba(37,99,235,.10);
+      --accent: #2563EB;
+      --accent-soft: rgba(37, 99, 235, .10);
 
-      --max:1100px;
-      --radius:16px;
-      --radius-sm:12px;
+      --max: 1100px;
+      --radius: 16px;
+      --radius-sm: 12px;
 
-      --topbar-h:56px;
-      --topbar-h-mobile:52px;
+      --topbar-h: 56px;
+      --topbar-h-mobile: 52px;
 
-      --pad:38px;
-      --pad-sm:18px;
+      --pad: 38px;
+      --pad-sm: 18px;
 
-      --h1:clamp(30px, 4.2vw, 44px);
-      --p:15px;
+      --h1: clamp(30px, 4.2vw, 44px);
+      --p: 15px;
     }
 
-    *{ box-sizing:border-box; }
-    html,body{ height:100%; margin:0; }
-    body{
-      background:var(--bg);
-      color:var(--text);
+    /* Nuevos estilos para Slide 4 - Process Flow */
+    .steps-container {
+      margin-top: 10px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    .step-card {
+      background: #fff;
+      border: 1px solid var(--line2);
+      border-radius: 12px;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      position: relative;
+    }
+
+    .step-num {
+      width: 24px;
+      height: 24px;
+      background: var(--text);
+      color: #fff;
+      border-radius: 50%;
+      font-size: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 4px;
+    }
+
+    .step-card h4 {
+      margin: 0;
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .step-card p {
+      margin: 0;
+      font-size: 12px;
+      line-height: 1.35;
+      color: var(--muted);
+    }
+
+    .actions-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      /* Izquierda más ancha para CTA principal */
+      gap: 12px;
+      flex: 1;
+      /* Ocupa el espacio restante */
+    }
+
+    .action-box {
+      border: 1px solid var(--line2);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      text-align: center;
+      cursor: pointer;
+      transition: all .2s;
+    }
+
+    .btn-primary {
+      background: var(--text);
+      color: #fff;
+      border: 1px solid var(--text);
+    }
+
+    .btn-primary:hover {
+      background: #333;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--line);
+      color: var(--text);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--text);
+    }
+
+    @media (max-width: 820px) {
+      .steps-container {
+        grid-template-columns: 1fr;
+      }
+
+      /* Pasos verticales en móvil */
+      .actions-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-      letter-spacing:-0.12px;
+      letter-spacing: -0.12px;
     }
-    a{ color:inherit; text-decoration:none; }
-    strong{ font-weight:700; }
 
-    .topbar{
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    strong {
+      font-weight: 700;
+    }
+
+    .topbar {
       position: sticky;
       top: 0;
       z-index: 50;
       height: var(--topbar-h);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background: rgba(251,251,250,.92);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(251, 251, 250, .92);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--line2);
     }
 
-    .topbar-inner{
+    .topbar-inner {
       width: min(var(--max), calc(100% - 20px));
       height: 100%;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       gap: 12px;
     }
 
-    .brand{
-      display:flex;
-      align-items:center;
+    .brand {
+      display: flex;
+      align-items: center;
       gap: 10px;
       min-width: 240px;
-      overflow:hidden;
+      overflow: hidden;
     }
 
-    .logo{
-      width: 28px; height: 28px;
+    .logo {
+      width: 28px;
+      height: 28px;
       border-radius: 8px;
       background: var(--text);
-      display:flex;
-      align-items:center;
-      justify-content:center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       flex: 0 0 auto;
       color: #fff;
       font-weight: 900;
@@ -87,37 +213,44 @@
       letter-spacing: -0.2px;
       position: relative;
     }
-    .logo::after{ content:"V"; transform: translateY(-0.2px); }
 
-    .name{
-      display:flex;
-      flex-direction:column;
-      line-height:1.05;
+    .logo::after {
+      content: "V";
+      transform: translateY(-0.2px);
+    }
+
+    .name {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.05;
       min-width: 0;
     }
-    .name b{
+
+    .name b {
       font-size: 13px;
       font-weight: 800;
       white-space: nowrap;
-      overflow:hidden;
+      overflow: hidden;
       text-overflow: ellipsis;
     }
-    .name span{
+
+    .name span {
       font-size: 11px;
       color: var(--muted2);
       font-weight: 600;
       white-space: nowrap;
-      overflow:hidden;
+      overflow: hidden;
       text-overflow: ellipsis;
     }
 
-    .nav{
-      display:flex;
+    .nav {
+      display: flex;
       gap: 6px;
-      align-items:center;
+      align-items: center;
       flex-wrap: nowrap;
     }
-    .nav a{
+
+    .nav a {
       font-size: 12px;
       color: var(--muted);
       padding: 6px 10px;
@@ -126,18 +259,20 @@
       transition: background .15s ease, border-color .15s ease, color .15s ease;
       white-space: nowrap;
     }
-    .nav a:hover{
-      background: rgba(17,17,17,.04);
-      border-color: var(--line2);
-      color: var(--text);
-    }
-    .nav a.active{
-      background: rgba(17,17,17,.04);
+
+    .nav a:hover {
+      background: rgba(17, 17, 17, .04);
       border-color: var(--line2);
       color: var(--text);
     }
 
-    .deck{
+    .nav a.active {
+      background: rgba(17, 17, 17, .04);
+      border-color: var(--line2);
+      color: var(--text);
+    }
+
+    .deck {
       height: calc(100vh - var(--topbar-h));
       overflow-y: auto;
       scroll-snap-type: y mandatory;
@@ -146,59 +281,61 @@
       overscroll-behavior: contain;
     }
 
-    .slide{
+    .slide {
       scroll-snap-align: start;
       scroll-margin-top: calc(var(--topbar-h) + 10px);
       min-height: calc(100vh - var(--topbar-h));
-      display:flex;
-      align-items:center;
-      justify-content:center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       padding: 22px 14px;
     }
 
-    .canvas{
+    .canvas {
       width: min(var(--max), 100%);
       background: var(--paper);
       border: 1px solid var(--line2);
       border-radius: var(--radius);
-      overflow:hidden;
-      box-shadow: 0 1px 0 rgba(17,17,17,.03);
+      overflow: hidden;
+      box-shadow: 0 1px 0 rgba(17, 17, 17, .03);
       aspect-ratio: 16 / 9;
       max-height: calc(100vh - 120px);
     }
 
-    .inner{
+    .inner {
       height: 100%;
       padding: var(--pad);
-      display:flex;
-      flex-direction:column;
+      display: flex;
+      flex-direction: column;
       gap: 14px;
-      overflow:auto;
+      overflow: auto;
     }
 
-    .header{
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
+    .header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
       gap: 16px;
     }
 
-    .kicker{
-      display:inline-flex;
-      align-items:center;
+    .kicker {
+      display: inline-flex;
+      align-items: center;
       gap: 8px;
       font-size: 12px;
       font-weight: 700;
       color: var(--muted);
       width: fit-content;
     }
-    .kicker .dot{
-      width:7px; height:7px;
-      border-radius:999px;
+
+    .kicker .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
       background: var(--accent);
     }
 
-    .title{
+    .title {
       font-size: var(--h1);
       line-height: 1.05;
       margin-top: 6px;
@@ -206,7 +343,7 @@
       letter-spacing: -0.8px;
     }
 
-    .subtitle{
+    .subtitle {
       margin: 10px 0 0;
       font-size: var(--p);
       line-height: 1.5;
@@ -214,41 +351,49 @@
       max-width: 60ch;
     }
 
-    .mono{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+    .mono {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
 
-    .chips{
+    .chips {
       margin-top: 10px;
-      display:flex;
-      flex-wrap:wrap;
+      display: flex;
+      flex-wrap: wrap;
       gap: 8px;
     }
-    .chip{
-      font-size:12px;
-      border: 1px solid var(--line2);
-      border-radius:999px;
-      padding:7px 10px;
-      background: rgba(17,17,17,.02);
-      color: var(--muted);
-      font-weight:650;
-    }
-    .chip b{ color: var(--text); font-weight:800; }
 
-    .grid-2{
-      display:grid;
+    .chip {
+      font-size: 12px;
+      border: 1px solid var(--line2);
+      border-radius: 999px;
+      padding: 7px 10px;
+      background: rgba(17, 17, 17, .02);
+      color: var(--muted);
+      font-weight: 650;
+    }
+
+    .chip b {
+      color: var(--text);
+      font-weight: 800;
+    }
+
+    .grid-2 {
+      display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 12px;
       flex: 1;
       min-height: 0;
     }
 
-    .card{
+    .card {
       border: 1px solid var(--line2);
       border-radius: var(--radius-sm);
       padding: 14px;
       background: #fff;
     }
-    .card h3{
-      margin:0;
+
+    .card h3 {
+      margin: 0;
       font-size: 12px;
       text-transform: uppercase;
       letter-spacing: .18px;
@@ -256,98 +401,155 @@
       font-weight: 800;
     }
 
-    .tiles{
+    .tiles {
       margin-top: 10px;
-      display:grid;
-      grid-template-columns: repeat(2, minmax(0,1fr));
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 10px;
     }
-    .tile{
-      border:1px solid var(--line2);
+
+    .tile {
+      border: 1px solid var(--line2);
       border-radius: 12px;
       padding: 12px;
-      background:#fff;
+      background: #fff;
     }
-    .tile .t{
-      margin:0 0 6px;
-      font-weight:850;
-      font-size:14px;
-      letter-spacing:-0.2px;
+
+    .tile .t {
+      margin: 0 0 6px;
+      font-weight: 850;
+      font-size: 14px;
+      letter-spacing: -0.2px;
     }
-    .tile .d{
-      margin:0;
-      font-size:13px;
-      line-height:1.35;
+
+    .tile .d {
+      margin: 0;
+      font-size: 13px;
+      line-height: 1.35;
       color: var(--muted);
     }
 
-    .bullets{
+    .bullets {
       margin: 10px 0 0;
       padding: 0;
-      list-style:none;
-      display:flex;
-      flex-direction:column;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
       gap: 8px;
     }
-    .bullets li{
-      display:flex;
+
+    .bullets li {
+      display: flex;
       gap: 10px;
       font-size: 13px;
       line-height: 1.35;
       color: var(--text);
     }
-    .check{
-      width:18px; height:18px;
-      border-radius:6px;
-      border:1px solid var(--line);
-      background: rgba(17,17,17,.03);
-      flex:0 0 auto;
-      position:relative;
+
+    .check {
+      width: 18px;
+      height: 18px;
+      border-radius: 6px;
+      border: 1px solid var(--line);
+      background: rgba(17, 17, 17, .03);
+      flex: 0 0 auto;
+      position: relative;
       margin-top: 1px;
     }
-    .check::after{
-      content:"";
-      position:absolute;
-      left:5px; top:4px;
-      width:7px; height:4px;
-      border-left:2px solid rgba(17,17,17,.70);
-      border-bottom:2px solid rgba(17,17,17,.70);
+
+    .check::after {
+      content: "";
+      position: absolute;
+      left: 5px;
+      top: 4px;
+      width: 7px;
+      height: 4px;
+      border-left: 2px solid rgba(17, 17, 17, .70);
+      border-bottom: 2px solid rgba(17, 17, 17, .70);
       transform: rotate(-45deg);
     }
 
-    .footer{
-      margin-top:auto;
-      padding-top:10px;
-      border-top:1px solid var(--line2);
-      display:flex;
-      justify-content:space-between;
+    .footer {
+      margin-top: auto;
+      padding-top: 10px;
+      border-top: 1px solid var(--line2);
+      display: flex;
+      justify-content: space-between;
       gap: 12px;
       color: var(--muted2);
-      font-size:12px;
+      font-size: 12px;
     }
 
-    @media (max-width: 820px){
-      .topbar{ height: var(--topbar-h-mobile); }
-      .deck{ height: calc(100vh - var(--topbar-h-mobile)); }
-      .slide{ scroll-margin-top: calc(var(--topbar-h-mobile) + 10px); }
+    @media (max-width: 820px) {
+      .topbar {
+        height: var(--topbar-h-mobile);
+      }
 
-      .canvas{ aspect-ratio: auto; max-height:none; }
-      .inner{ padding: var(--pad-sm); }
-      .grid-2{ grid-template-columns: 1fr; }
-      .tiles{ grid-template-columns: 1fr; }
-      .title{ font-size: clamp(26px, 7vw, 34px); }
+      .deck {
+        height: calc(100vh - var(--topbar-h-mobile));
+      }
+
+      .slide {
+        scroll-margin-top: calc(var(--topbar-h-mobile) + 10px);
+      }
+
+      .canvas {
+        aspect-ratio: auto;
+        max-height: none;
+      }
+
+      .inner {
+        padding: var(--pad-sm);
+      }
+
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .tiles {
+        grid-template-columns: 1fr;
+      }
+
+      .title {
+        font-size: clamp(26px, 7vw, 34px);
+      }
     }
 
-    @media (prefers-reduced-motion: reduce){
-      .deck{ scroll-behavior: auto; scroll-snap-type: none; }
+    @media (prefers-reduced-motion: reduce) {
+      .deck {
+        scroll-behavior: auto;
+        scroll-snap-type: none;
+      }
     }
 
-    @media print{
-      .topbar{ display:none; }
-      .deck{ height:auto; overflow:visible; scroll-snap-type: none; }
-      .slide{ min-height:auto; padding:0; page-break-after: always; }
-      .canvas{ width:100%; aspect-ratio:16/9; border-radius:0; max-height:none; }
-      *{ -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    @media print {
+      .topbar {
+        display: none;
+      }
+
+      .deck {
+        height: auto;
+        overflow: visible;
+        scroll-snap-type: none;
+      }
+
+      .slide {
+        min-height: auto;
+        padding: 0;
+        page-break-after: always;
+      }
+
+      .canvas {
+        width: 100%;
+        aspect-ratio: 16/9;
+        border-radius: 0;
+        max-height: none;
+      }
+
+      * {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
     }
   </style>
 </head>
@@ -381,17 +583,15 @@
         <div class="inner">
           <div class="header">
             <div>
-              <div class="kicker"><span class="dot"></span>Operación general · Paquetes cerrados</div>
-              <div class="title">Automatización con foco en operación</div>
+              <!-- <div class="kicker"><span class="dot"></span>Operación general · Paquetes cerrados</div> -->
+              <div class="title">Automatización con foco en la operación</div>
               <p class="subtitle">
-                Diseñamos e implementamos automatizaciones para reducir trabajo manual, mejorar trazabilidad y acelerar decisiones.
-                Entrega pragmática, lista para operar.
+                Ayudamos a equipos de operaciones y analítica a reducir trabajo manual,
+                mejorar trazabilidad y acelerar decisiones, con entregas listas para usar.
               </p>
 
               <div class="chips">
                 <span class="chip"><b>Quick Win</b> 3–6 semanas</span>
-                <span class="chip"><b>USD</b> 3K–5K fijo</span>
-                <span class="chip"><b>Datos sensibles</b> OK</span>
               </div>
             </div>
           </div>
@@ -409,11 +609,7 @@
                   <p class="d">KPIs listos para decidir, sin tareas manuales.</p>
                 </div>
                 <div class="tile">
-                  <p class="t">Integraciones DB / API</p>
-                  <p class="d">Flujos robustos conectados a fuentes confiables.</p>
-                </div>
-                <div class="tile">
-                  <p class="t">IA aplicada (cuando suma)</p>
+                  <p class="t">IA aplicada</p>
                   <p class="d">Asistentes, clasificación o extracción con control.</p>
                 </div>
               </div>
@@ -422,8 +618,10 @@
             <div class="card">
               <h3>Qué entregamos</h3>
               <ul class="bullets">
-                <li><span class="check"></span><span><strong>Automatización productiva</strong> (alcance cerrado).</span></li>
-                <li><span class="check"></span><span><strong>Monitoreo + alertas</strong> para operación estable.</span></li>
+                <li><span class="check"></span><span><strong>Automatización productiva</strong> (alcance
+                    cerrado).</span></li>
+                <li><span class="check"></span><span><strong>Monitoreo + alertas</strong> para operación estable.</span>
+                </li>
                 <li><span class="check"></span><span><strong>Trazabilidad</strong> (logs y evidencia).</span></li>
                 <li><span class="check"></span><span><strong>Runbook</strong> para handover.</span></li>
               </ul>
@@ -469,20 +667,16 @@
               <h3>Proyectos destacados</h3>
               <div class="tiles">
                 <div class="tile">
-                  <p class="t">Scoring automático</p>
-                  <p class="d">Ofertas de crédito para 50K usuarios/mes.</p>
+                  <p class="t">Scoring automático para ofertas de crédito</p>
+                  <p class="d">Onboarding y clasificacion de usuarios según riesgo.
+                    50k usuarios/mes obtuvieron pre-ofertas de crédito incrementando en un 20% la colocación de crédito
+                  </p>
                 </div>
                 <div class="tile">
-                  <p class="t">Onboarding digital</p>
-                  <p class="d">Reducción de contacto de 2 días a 1 hora.</p>
-                </div>
-                <div class="tile">
-                  <p class="t">KPIs + RPA (Retail)</p>
-                  <p class="d">Reportes automatizados y accionamiento de negocio.</p>
-                </div>
-                <div class="tile">
-                  <p class="t">Control Tower operativo</p>
-                  <p class="d">Seguimiento con transparencia y trazabilidad.</p>
+                  <p class="t">Control Tower (Operación Logística)</p>
+                  <p class="d"> Proceso de seguimiento de 60k pedidos diarios, clasificando estado y direccionando
+                    acciones
+                    a los responsables de cada proceso. </p>
                 </div>
               </div>
             </div>
@@ -537,8 +731,10 @@
             <div class="card">
               <h3>Cómo trabajamos</h3>
               <ul class="bullets">
-                <li><span class="check"></span><span><strong>Alcance claro</strong> + criterios de aceptación.</span></li>
-                <li><span class="check"></span><span><strong>Entrega operable</strong> (monitoreo + alertas).</span></li>
+                <li><span class="check"></span><span><strong>Alcance claro</strong> + criterios de aceptación.</span>
+                </li>
+                <li><span class="check"></span><span><strong>Entrega operable</strong> (monitoreo + alertas).</span>
+                </li>
                 <li><span class="check"></span><span><strong>Documentación</strong> (runbook + handover).</span></li>
               </ul>
             </div>
@@ -546,9 +742,10 @@
             <div class="card">
               <h3>Security / Privacy by Design</h3>
               <ul class="bullets">
-                <li><span class="check"></span><span><strong>Menor privilegio</strong> (accesos mínimos).</span></li>
+                <li><span class="check"></span><span><strong>Menor privilegio</strong>.</span></li>
                 <li><span class="check"></span><span><strong>Secretos protegidos</strong> fuera del código.</span></li>
-                <li><span class="check"></span><span><strong>Logs auditables</strong> sin exposición de datos.</span></li>
+                <li><span class="check"></span><span><strong>Logs auditables</strong> sin exposición de datos.</span>
+                </li>
               </ul>
 
               <div class="chips">
@@ -573,60 +770,72 @@
           <div class="header">
             <div>
               <div class="kicker"><span class="dot"></span>Próximos pasos</div>
-              <div class="title">Cerramos un Quick Win</div>
+              <div class="title">Cómo empezamos</div>
               <p class="subtitle">
-                Kickoff de 45 minutos → propuesta cerrada en 48–72h → entrega en 3–6 semanas.
+                Estructura simple y transparente. Desde el primer contacto hasta la operación estable,
+                mantenemos el foco en el valor inmediato.
               </p>
-
-              <div class="chips">
-                <span class="chip"><b>USD</b> 3K–5K fijo</span>
-                <span class="chip"><b>Entrega</b> 1 proceso productivo</span>
-                <span class="chip"><b>Inicio</b> inmediato</span>
-              </div>
             </div>
           </div>
 
-          <div class="grid-2">
-            <div class="card">
-              <h3>Plan simple</h3>
-              <div class="tiles">
-                <div class="tile">
-                  <p class="t">1) Kickoff</p>
-                  <p class="d">Objetivo, reglas, sistemas y riesgos.</p>
-                </div>
-                <div class="tile">
-                  <p class="t">2) Propuesta</p>
-                  <p class="d">Alcance, entregables y costo fijo.</p>
-                </div>
-                <div class="tile">
-                  <p class="t">3) Ejecución</p>
-                  <p class="d">Build, pruebas y go-live.</p>
-                </div>
-                <div class="tile">
-                  <p class="t">4) Operación</p>
-                  <p class="d">Monitoreo, alertas y runbook.</p>
+          <div class="steps-container">
+            <div class="step-card">
+              <div class="step-num">1</div>
+              <h4>Kickoff (45m)</h4>
+              <p>Entendemos el dolor, definimos reglas de negocio, revisamos accesos y riesgos.</p>
+            </div>
+            <div class="step-card">
+              <div class="step-num">2</div>
+              <h4>Propuesta (48h)</h4>
+              <p>Te enviamos alcance cerrado, entregables exactos y costo fijo (sin sorpresas).</p>
+            </div>
+            <div class="step-card">
+              <div class="step-num">3</div>
+              <h4>Ejecución</h4>
+              <p>Desarrollo iterativo, configuración de entorno y pruebas de usuario (UAT).</p>
+            </div>
+            <div class="step-card">
+              <div class="step-num">4</div>
+              <h4>Operación</h4>
+              <p>Go-live, entrega de runbook, configuración de alertas y monitoreo.</p>
+            </div>
+          </div>
+
+          <div class="actions-grid">
+
+            <div class="action-box" style="background: rgba(37,99,235,.03); border-color: var(--accent-soft);">
+              <h3 style="color:var(--accent); margin-bottom:6px;">¿Listo para un Quick Win?</h3>
+              <p style="font-size:14px; color:var(--text); margin:0 0 14px; line-height:1.4;">
+                Si tienes un proceso manual identificado (Excel, carga de datos, reportes), podemos iniciar de
+                inmediato.
+              </p>
+              <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                <button data-cal-link="vectorpath/30min" data-cal-namespace="30min" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}' class="btn btn-primary"
+                  style="border:none; font-family:inherit;">
+                  Agendar reunión
+                </button>
+                <span class="chip" style="background:#fff;">Inicio inmediato</span>
+              </div>
+            </div>
+
+            <div class="action-box">
+              <h3 style="margin-bottom:6px;">¿Aún evaluando?</h3>
+              <p style="font-size:13px; color:var(--muted); margin:0 0 14px; line-height:1.4;">
+                Conoce cómo podemos ayudarte a automatizar y mejorar la eficiencia operativa.
+              </p>
+              <div style="display:flex; flex-direction:column; gap:8px;">
+                <a href="mailto:hola@vector.com" class="btn btn-outline">Contactanos</a>
+                <div style="font-size:11px; color:var(--muted2); text-align:center;">
+                  hola@vectorpath.org
                 </div>
               </div>
             </div>
 
-            <div class="card">
-              <h3>Qué necesitamos del cliente</h3>
-              <ul class="bullets">
-                <li><span class="check"></span><span><strong>Referente funcional</strong> (UAT).</span></li>
-                <li><span class="check"></span><span><strong>Accesos</strong> a DB/API/sistemas.</span></li>
-                <li><span class="check"></span><span><strong>Casos reales</strong> para excepciones.</span></li>
-              </ul>
-
-              <div class="chips">
-                <span class="chip"><b>CTA</b> agendar kickoff</span>
-                <span class="chip"><b>Salida</b> propuesta 48–72h</span>
-              </div>
-            </div>
           </div>
 
           <div class="footer">
             <div>Vector Consulting</div>
-            <div>Siguiente paso: kickoff</div>
+            <div>De la idea a la operación</div>
           </div>
         </div>
       </article>
@@ -635,22 +844,34 @@
   </main>
 
   <script>
+  (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+Cal("init", "30min", {origin:"https://app.cal.com"});
+
+  
+  // Important: Please add the following attributes to the element that should trigger the calendar to open upon clicking.
+  // `data-cal-link="vectorpath/30min"`
+  // data-cal-namespace="30min"
+  // `data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'`
+
+  Cal.ns["30min"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
+
     // navbar active state
     const links = [...document.querySelectorAll('.nav a')];
     const sections = links.map(a => document.querySelector(a.getAttribute('href')));
 
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{
-        if(e.isIntersecting){
-          links.forEach(l=>l.classList.remove('active'));
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          links.forEach(l => l.classList.remove('active'));
           const id = `#${e.target.id}`;
-          const active = links.find(l=>l.getAttribute('href')===id);
-          if(active) active.classList.add('active');
+          const active = links.find(l => l.getAttribute('href') === id);
+          if (active) active.classList.add('active');
         }
       });
     }, { root: document.querySelector('.deck'), threshold: 0.55 });
 
-    sections.forEach(s=> s && io.observe(s));
+    sections.forEach(s => s && io.observe(s));
   </script>
 </body>
+
 </html>
