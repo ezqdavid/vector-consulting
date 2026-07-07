@@ -857,7 +857,7 @@ Cal("init", "30min", {origin:"https://app.cal.com"});
   Cal.ns["30min"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
 
     // navbar active state
-    const links = [...document.querySelectorAll('.nav a')];
+    const links = [...document.querySelectorAll('.nav a')].filter(a => a.getAttribute('href')?.startsWith('#'));
     const sections = links.map(a => document.querySelector(a.getAttribute('href')));
 
     const io = new IntersectionObserver((entries) => {
