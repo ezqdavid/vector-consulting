@@ -4,29 +4,40 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Vector Consulting | Automatización operativa e IA aplicada</title>
+  <title>Vector Path | Automatización operativa e IA aplicada</title>
   <meta name="description"
     content="Ayudamos a equipos de operaciones y analítica a automatizar procesos críticos, reducir trabajo manual y acelerar decisiones con entregas listas para usar." />
-  <meta property="og:title" content="Vector Consulting | Automatización operativa e IA aplicada" />
+  <meta property="og:title" content="Vector Path | Automatización operativa e IA aplicada" />
   <meta property="og:description"
     content="Consultoría boutique para operación, reporting automatizado y procesos con IA aplicada. Kickoff, propuesta, ejecución y operación estable." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://vectorpath.org/" />
   <link rel="icon" type="image/svg+xml"
     href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 28'><rect width='28' height='28' rx='8' fill='%23111111' /><text x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' fill='%23ffffff' font-weight='900' font-size='14px' font-family='sans-serif' letter-spacing='-0.2px'>V</text></svg>">
+  
+  <!-- Premium Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
   <style>
     :root {
       --bg: #fbfbfa;
-      --paper: #fff;
-      --text: #111;
-      --muted: #6b6b6b;
-      --line: rgba(17, 17, 17, .10);
-      --line2: rgba(17, 17, 17, .06);
+      --paper: #ffffff;
+      --text: #111111;
+      --muted: #5e5e62;
+      --line: rgba(17, 17, 17, 0.08);
+      --line2: rgba(17, 17, 17, 0.04);
       --accent: #2563eb;
-      --accent-soft: rgba(37, 99, 235, .10);
+      --accent-hover: #1d4ed8;
+      --accent-soft: rgba(37, 99, 235, 0.08);
+      --accent-glow: rgba(37, 99, 235, 0.15);
       --max: 1100px;
-      --radius: 16px;
-      --radius-sm: 12px;
+      --radius: 20px;
+      --radius-sm: 14px;
+      --shadow-sm: 0 2px 8px -1px rgba(0, 0, 0, 0.02), 0 4px 20px -2px rgba(0, 0, 0, 0.04);
+      --shadow-md: 0 10px 30px -5px rgba(0, 0, 0, 0.03), 0 8px 24px -6px rgba(37, 99, 235, 0.05);
+      --shadow-lg: 0 20px 40px -15px rgba(0, 0, 0, 0.05), 0 15px 30px -10px rgba(37, 99, 235, 0.08);
     }
 
     * {
@@ -39,162 +50,254 @@
       padding: 0;
       background: var(--bg);
       color: var(--text);
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-      letter-spacing: -0.12px;
+      font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, -apple-system, sans-serif;
+      letter-spacing: -0.2px;
       scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
     a {
       color: inherit;
       text-decoration: none;
+      transition: all 0.2s ease;
     }
 
     .container {
-      width: min(var(--max), calc(100% - 28px));
+      width: min(var(--max), calc(100% - 40px));
       margin: 0 auto;
     }
 
+    /* Topbar Navigation */
     .topbar {
       position: sticky;
       top: 0;
-      z-index: 30;
-      background: rgba(251, 251, 250, .92);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--line2);
+      z-index: 100;
+      background: rgba(251, 251, 250, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--line);
+      transition: all 0.3s ease;
     }
 
     .topbar-inner {
-      min-height: 56px;
+      min-height: 72px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
+      gap: 16px;
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
       min-width: 240px;
     }
 
     .logo {
-      width: 28px;
-      height: 28px;
-      border-radius: 8px;
-      background: var(--text);
+      width: 32px;
+      height: 32px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--text) 0%, #333 100%);
       color: #fff;
       display: grid;
       place-items: center;
-      font-weight: 900;
-      font-size: 14px;
+      font-weight: 800;
+      font-size: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
     .name {
       display: flex;
       flex-direction: column;
-      line-height: 1.1;
+      line-height: 1.2;
     }
 
     .name b {
-      font-size: 14px;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
     }
 
     .name span {
       color: var(--muted);
       font-size: 11px;
+      font-weight: 500;
     }
 
     .nav {
       display: flex;
       align-items: center;
-      gap: 14px;
-      font-size: 13px;
+      gap: 20px;
+      font-size: 14px;
+      font-weight: 600;
       color: var(--muted);
-      flex-wrap: wrap;
-      justify-content: flex-end;
+    }
+
+    .nav a {
+      padding: 6px 10px;
+      border-radius: 8px;
     }
 
     .nav a:hover {
       color: var(--text);
+      background: var(--line2);
     }
 
+    .nav a.active-cta {
+      color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    .nav a.active-cta:hover {
+      background: rgba(37, 99, 235, 0.15);
+    }
+
+    /* Section Global Styles */
     .section {
-      padding: 54px 0;
-      border-bottom: 1px solid var(--line2);
+      padding: 80px 0;
+      border-bottom: 1px solid var(--line);
     }
 
+    .section-title {
+      font-size: clamp(24px, 3.5vw, 32px);
+      font-weight: 800;
+      letter-spacing: -0.6px;
+      margin-bottom: 32px;
+      position: relative;
+    }
+
+    .section-subtitle {
+      font-size: 16px;
+      color: var(--muted);
+      max-width: 650px;
+      margin-top: -20px;
+      margin-bottom: 40px;
+      line-height: 1.5;
+    }
+
+    /* Hero Section */
     .hero {
-      padding: 62px 0 50px;
+      padding: 100px 0 80px;
+      text-align: left;
     }
 
     .kicker {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      border: 1px solid var(--line2);
-      background: #fff;
+      border: 1px solid var(--line);
+      background: var(--paper);
       border-radius: 999px;
-      padding: 6px 10px;
-      font-size: 11px;
-      color: var(--muted);
-      margin-bottom: 16px;
+      padding: 6px 14px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 24px;
+      box-shadow: var(--shadow-sm);
     }
 
-    h1 {
+    .kicker::before {
+      content: "";
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.7); }
+      70% { transform: scale(1); box-shadow: 0 0 0 5px rgba(37, 99, 235, 0); }
+      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
+    }
+
+    h1.hero-title {
       margin: 0;
-      font-size: clamp(30px, 5vw, 46px);
-      line-height: 1.06;
-      letter-spacing: -0.4px;
-      max-width: 900px;
+      font-size: clamp(32px, 5.5vw, 52px);
+      line-height: 1.15;
+      font-weight: 800;
+      letter-spacing: -1.2px;
+      max-width: 980px;
+      color: var(--text);
     }
 
-    .lead {
-      margin: 16px 0 0;
-      color: var(--muted);
-      font-size: clamp(16px, 2.1vw, 19px);
-      line-height: 1.45;
-      max-width: 850px;
+    h1.hero-title span.gradient-text {
+      background: linear-gradient(135deg, var(--accent) 0%, #4f46e5 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     .actions {
-      margin-top: 24px;
+      margin-top: 36px;
       display: flex;
-      gap: 10px;
+      align-items: center;
+      gap: 16px;
       flex-wrap: wrap;
     }
 
+    /* Modern Buttons */
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 11px 16px;
-      border-radius: 10px;
-      border: 1px solid transparent;
-      font-size: 13px;
+      padding: 14px 28px;
+      border-radius: var(--radius-sm);
+      font-size: 14px;
       font-weight: 700;
       cursor: pointer;
       font-family: inherit;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      gap: 8px;
+      border: 1px solid transparent;
     }
 
     .btn-primary {
       background: var(--text);
       color: #fff;
       border-color: var(--text);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-primary:hover {
+      background: #222;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .btn-secondary-cta {
+      background: var(--accent-soft);
+      color: var(--accent);
+      border-color: transparent;
+    }
+
+    .btn-secondary-cta:hover {
+      background: var(--accent);
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px var(--accent-glow);
     }
 
     .btn-outline {
-      background: #fff;
+      background: var(--paper);
       color: var(--text);
       border-color: var(--line);
+      box-shadow: var(--shadow-sm);
     }
 
+    .btn-outline:hover {
+      background: var(--bg);
+      border-color: var(--text);
+      transform: translateY(-2px);
+    }
+
+    /* Grids & Cards */
     .grid-3,
-    .grid-2,
-    .steps,
-    .profiles {
+    .grid-2 {
       display: grid;
-      gap: 12px;
+      gap: 20px;
     }
 
     .grid-3 {
@@ -205,135 +308,429 @@
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    .steps {
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-    }
-
-    .profiles {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
     .card {
       background: var(--paper);
-      border: 1px solid var(--line2);
-      border-radius: var(--radius-sm);
-      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 30px;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
     }
 
-    h2 {
-      margin: 0 0 16px;
-      font-size: clamp(22px, 3vw, 30px);
-      letter-spacing: -0.3px;
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(37, 99, 235, 0.2);
+      box-shadow: var(--shadow-md);
     }
 
-    h3 {
-      margin: 0 0 8px;
-      font-size: 17px;
+    /* Solutions Section Styling */
+    .solution-card {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
     }
 
-    p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.45;
-      font-size: 14px;
-    }
-
-    ul {
-      margin: 8px 0 0;
-      padding-left: 18px;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.45;
-    }
-
-    li+li {
-      margin-top: 6px;
-    }
-
-    .step-num {
-      width: 24px;
-      height: 24px;
-      border-radius: 999px;
+    .solution-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      background: var(--accent-soft);
+      color: var(--accent);
       display: grid;
       place-items: center;
-      font-size: 12px;
-      font-weight: 700;
+      margin-bottom: 24px;
+      transition: all 0.3s ease;
+    }
+
+    .solution-card:hover .solution-icon {
+      background: var(--accent);
       color: #fff;
-      background: var(--text);
+      transform: scale(1.05);
+    }
+
+    .solution-card h3 {
+      font-size: 19px;
+      font-weight: 700;
+      margin: 0 0 10px 0;
+    }
+
+    .solution-card p {
+      font-size: 14.5px;
+      line-height: 1.55;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    /* Data Impact Cards */
+    .metric-card {
+      background: linear-gradient(180deg, var(--paper) 0%, var(--bg) 100%);
+      border: 1px solid var(--line);
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .metric-value {
+      font-size: 42px;
+      font-weight: 800;
+      line-height: 1;
+      color: var(--accent);
+      letter-spacing: -1.5px;
       margin-bottom: 8px;
     }
 
-    .highlight {
-      background: rgba(37, 99, 235, .03);
-      border-color: var(--accent-soft);
+    .metric-accent-text {
+      background: var(--accent-soft);
+      color: var(--accent);
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      display: inline-block;
+      align-self: flex-start;
+      margin-bottom: 16px;
     }
 
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap: 12px;
+    .metric-card h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin: 0 0 8px 0;
     }
 
-    .contact-list {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin-top: 10px;
+    .metric-card p {
       font-size: 14px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* Stack list styled */
+    .stack-list {
+      list-style: none;
+      padding: 0;
+      margin: 16px 0 0 0;
+    }
+
+    .stack-list li {
+      position: relative;
+      padding-left: 24px;
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+
+    .stack-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--accent);
+      font-weight: 800;
+    }
+
+    /* Timeline Process Section */
+    .timeline-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      position: relative;
+      margin-top: 40px;
+    }
+
+    .timeline-container::before {
+      content: "";
+      position: absolute;
+      top: 48px;
+      left: 50px;
+      right: 50px;
+      height: 2px;
+      background: repeating-linear-gradient(90deg, var(--line), var(--line) 8px, transparent 8px, transparent 16px);
+      z-index: 1;
+    }
+
+    .timeline-step {
+      position: relative;
+      z-index: 2;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .timeline-step:hover {
+      border-color: var(--accent);
+      box-shadow: var(--shadow-md);
+    }
+
+    .step-badge {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--text);
+      color: #fff;
+      font-size: 18px;
+      font-weight: 800;
+      display: grid;
+      place-items: center;
+      margin-bottom: 20px;
+      border: 4px solid var(--bg);
+      box-shadow: 0 0 0 1px var(--line);
+      transition: all 0.3s ease;
+    }
+
+    .timeline-step:hover .step-badge {
+      background: var(--accent);
+      transform: scale(1.05);
+    }
+
+    .timeline-step h3 {
+      font-size: 17px;
+      font-weight: 700;
+      margin: 0 0 8px 0;
+    }
+
+    .timeline-step p {
+      font-size: 13.5px;
+      line-height: 1.5;
       color: var(--muted);
     }
 
-    .form {
+    /* Humanized Who We Are Section */
+    .profiles {
       display: grid;
-      gap: 8px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
     }
 
-    input,
-    textarea {
+    .profile-card {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+      background: var(--paper);
+    }
+
+    .profile-avatar-wrapper {
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .profile-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent-soft) 0%, rgba(37, 99, 235, 0.2) 100%);
+      border: 2px solid var(--accent);
+      display: grid;
+      place-items: center;
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--accent);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .profile-info {
+      flex-grow: 1;
+    }
+
+    .profile-info h3 {
+      font-size: 19px;
+      font-weight: 700;
+      margin: 0 0 4px 0;
+    }
+
+    .profile-role {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 12px;
+    }
+
+    .profile-info p {
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    /* LinkedIn Badge Link */
+    .linkedin-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #f3f4f6;
+      color: #0b66c2;
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      border: 1px solid rgba(11, 102, 194, 0.15);
+      transition: all 0.2s ease;
+    }
+
+    .linkedin-badge:hover {
+      background: #0b66c2;
+      color: #fff;
+      border-color: #0b66c2;
+      transform: translateY(-1px);
+    }
+
+    /* Dual Contact Section & Form */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .contact-info-card {
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.02) 0%, rgba(37, 99, 235, 0.05) 100%);
+      border: 1px solid rgba(37, 99, 235, 0.15);
+    }
+
+    .contact-info-card h3 {
+      font-size: 22px;
+      font-weight: 700;
+      margin-top: 0;
+    }
+
+    .contact-details {
+      margin-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      font-size: 14.5px;
+      font-weight: 550;
+    }
+
+    .contact-details a {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .contact-details a:hover {
+      text-decoration: underline;
+    }
+
+    .form-wrapper {
+      background: var(--paper);
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+      position: relative;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .form-input {
       width: 100%;
       border: 1px solid var(--line);
-      border-radius: 10px;
-      padding: 10px 12px;
-      font: inherit;
-      background: #fff;
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+      font-size: 14.5px;
+      color: var(--text);
+      background: var(--bg);
+      font-family: inherit;
+      transition: all 0.25s ease;
+      outline: none;
     }
 
-    textarea {
-      min-height: 104px;
+    .form-input:focus {
+      border-color: var(--accent);
+      background: var(--paper);
+      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+    }
+
+    textarea.form-input {
+      min-height: 120px;
       resize: vertical;
     }
 
+    /* Footer */
     .footer {
-      padding: 18px 0 32px;
+      padding: 40px 0;
       color: var(--muted);
-      font-size: 12px;
+      font-size: 13px;
+      font-weight: 500;
       display: flex;
       justify-content: space-between;
-      gap: 8px;
+      align-items: center;
+      gap: 16px;
       flex-wrap: wrap;
+      border-top: 1px solid var(--line2);
     }
 
-    @media (max-width: 900px) {
+    /* Responsive adjustments */
+    @media (max-width: 992px) {
+      .grid-3 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .timeline-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .timeline-container::before {
+        display: none;
+      }
+      .profiles {
+        grid-template-columns: 1fr;
+      }
+    }
 
+    @media (max-width: 768px) {
       .grid-3,
       .grid-2,
-      .steps,
-      .profiles,
+      .timeline-container,
       .contact-grid {
         grid-template-columns: 1fr;
       }
 
       .topbar-inner {
-        align-items: flex-start;
-        padding: 10px 0;
+        flex-direction: column;
+        align-items: center;
+        padding: 16px 0;
+        gap: 12px;
+      }
+
+      .brand {
+        justify-content: center;
       }
 
       .nav {
-        font-size: 12px;
+        font-size: 12.5px;
+        gap: 12px;
       }
 
       .hero {
-        padding-top: 46px;
+        padding: 60px 0 40px;
+      }
+
+      .actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .profile-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .section {
+        padding: 60px 0;
       }
     }
   </style>
@@ -345,7 +742,7 @@
       <a class="brand" href="#inicio" aria-label="Inicio">
         <div class="logo">V</div>
         <div class="name">
-          <b>Vector Consulting</b>
+          <b>Vector Path</b>
           <span>Operación · Automatización · IA aplicada</span>
         </div>
       </a>
@@ -354,7 +751,6 @@
         <a href="#experiencia">Experiencia</a>
         <a href="#proceso">Proceso</a>
         <a href="#contacto">Contacto</a>
-        <a href="/presentacion.html"><strong>Ver presentación</strong></a>
       </nav>
     </div>
   </header>
@@ -362,144 +758,228 @@
   <main id="inicio" class="container">
     <section class="hero section" style="border-top:none;">
       <div class="kicker">Consultoría boutique, ejecución senior</div>
-      <h1>Automatizamos procesos críticos para equipos de operaciones y analítica</h1>
-      <p class="lead">
-        Reducimos trabajo manual, mejoramos trazabilidad y aceleramos decisiones con entregas listas para usar.
-        Diseño, implementación y operación estable en un esquema simple de punta a punta.
-      </p>
+      <h1 class="hero-title">
+        <span class="gradient-text">Ayudamos a equipos de operaciones y analítica</span> a automatizar procesos críticos para reducir trabajo manual, mejorar trazabilidad y acelerar decisiones, con entregas listas para usar.
+      </h1>
       <div class="actions">
         <button data-cal-link="vectorpath/30min" data-cal-namespace="30min"
           data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}' class="btn btn-primary"
-          style="border:none;">Agendar reunión</button>
-        <a href="#contacto" class="btn btn-outline">Contactar</a>
-        <a href="/presentacion.html" class="btn btn-outline">Busco la presentación</a>
+          style="border:none;">
+          <span>Agendar reunión</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+        </button>
+        <a href="#contacto" class="btn btn-secondary-cta">
+          <span>Charlemos sobre tu proceso</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+        </a>
       </div>
     </section>
 
     <section id="soluciones" class="section">
-      <h2>Qué resolvemos</h2>
+      <h2 class="section-title">Qué resolvemos</h2>
+      <p class="section-subtitle">Diseñamos soluciones directas y estables que integran tus datos, flujos de trabajo y herramientas preferidas.</p>
       <div class="grid-3">
-        <article class="card">
+        <article class="card solution-card">
+          <div class="solution-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+            </svg>
+          </div>
           <h3>Automatización operativa</h3>
-          <p>Procesos repetitivos con reglas y excepciones para reducir errores y liberar horas de trabajo manual.</p>
+          <p>Procesos repetitivos con reglas y excepciones mapeadas para reducir errores operativos y liberar horas críticas de trabajo manual.</p>
         </article>
-        <article class="card">
+        
+        <article class="card solution-card">
+          <div class="solution-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="20" x2="18" y2="10"></line>
+              <line x1="12" y1="20" x2="12" y2="4"></line>
+              <line x1="6" y1="20" x2="6" y2="14"></line>
+            </svg>
+          </div>
           <h3>Reporting automatizado</h3>
-          <p>KPIs listos para decidir, con actualización confiable y menor dependencia de tareas manuales.</p>
+          <p>Modelado de datos y KPIs listos para decidir, con actualizaciones confiables en tiempo real y menor dependencia de tareas manuales de extracción.</p>
         </article>
-        <article class="card">
+        
+        <article class="card solution-card">
+          <div class="solution-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+              <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+              <line x1="12" y1="22.08" x2="12" y2="12"></line>
+            </svg>
+          </div>
           <h3>IA aplicada</h3>
-          <p>Asistentes, clasificación y extracción de información con controles de seguridad y trazabilidad.</p>
+          <p>Asistentes inteligentes, clasificación automatizada de documentos y extracción de información sensible con rigurosos controles de seguridad y trazabilidad.</p>
         </article>
       </div>
     </section>
 
     <section id="experiencia" class="section">
-      <h2>Experiencia con impacto real</h2>
+      <h2 class="section-title">Experiencia con impacto real</h2>
+      <p class="section-subtitle">Casos prácticos de integración y desarrollo donde el valor se traduce en métricas de negocio medibles.</p>
+      
       <div class="grid-2">
-        <article class="card">
-          <h3>Scoring automático para crédito</h3>
-          <p>50.000 usuarios por mes recibieron preofertas de crédito, aumentando un 20% la colocación.</p>
+        <article class="card metric-card">
+          <div>
+            <span class="metric-accent-text">Fintech & Crédito</span>
+            <div class="metric-value">50.000+</div>
+            <h3>Scoring automático para crédito</h3>
+            <p>Usuarios procesados por mes que recibieron preofertas automáticas y preaprobaciones en tiempo real, <strong>aumentando un 20% la colocación</strong> final de la cartera.</p>
+          </div>
         </article>
-        <article class="card">
-          <h3>Control Tower logística</h3>
-          <p>Seguimiento de 60.000 pedidos diarios para clasificar estados y direccionar acciones por responsable.</p>
+
+        <article class="card metric-card">
+          <div>
+            <span class="metric-accent-text">Logística & Distribución</span>
+            <div class="metric-value">60.000</div>
+            <h3>Control Tower logística</h3>
+            <p><strong>Seguimiento de pedidos diarios</strong> procesados de forma automatizada para clasificar estados, detectar desvíos de ruta y direccionar acciones inmediatas al responsable de zona.</p>
+          </div>
         </article>
       </div>
-      <div class="grid-2" style="margin-top:12px;">
+
+      <div class="grid-2" style="margin-top:20px;">
         <article class="card">
           <h3>Servicios y entregables</h3>
-          <ul>
-            <li>Automatización productiva con alcance cerrado.</li>
-            <li>Monitoreo, alertas y runbook de operación.</li>
-            <li>Trazabilidad completa con evidencia de ejecución.</li>
+          <ul class="stack-list">
+            <li><strong>Automatización productiva</strong>: Desarrollos estables con alcance y plazos cerrados.</li>
+            <li><strong>Monitoreo y alertas</strong>: Canalización de fallos y runbook de operación documentado.</li>
+            <li><strong>Trazabilidad completa</strong>: Bitácora digital con evidencia de ejecución para auditoría.</li>
           </ul>
         </article>
+        
         <article class="card">
           <h3>Stack técnico</h3>
-          <ul>
-            <li>SQL, Python y JavaScript.</li>
-            <li>Power BI, Tableau y SQL Server.</li>
-            <li>ETL, APIs, microservicios, RPA e IA aplicada.</li>
+          <ul class="stack-list">
+            <li><strong>Core Dev</strong>: SQL estructurado, scripts robustos en Python y JavaScript (Node.js).</li>
+            <li><strong>Visualización</strong>: Power BI avanzado, Tableau, Looker Studio e integración con SQL Server.</li>
+            <li><strong>Arquitectura</strong>: Pipelines ETL, consumo y publicación de APIs, microservicios, RPA e IA aplicada.</li>
           </ul>
         </article>
       </div>
     </section>
 
     <section id="proceso" class="section">
-      <h2>Cómo trabajamos</h2>
-      <div class="steps">
-        <article class="card">
-          <div class="step-num">1</div>
+      <h2 class="section-title">Cómo trabajamos</h2>
+      <p class="section-subtitle">Un flujo ágil y predecible diseñado para evitar retrasos y entregar valor en plazos cortos.</p>
+      
+      <div class="timeline-container">
+        <article class="timeline-step">
+          <div class="step-badge">1</div>
           <h3>Kickoff (45m)</h3>
-          <p>Entendemos el proceso actual, riesgos, accesos y objetivos de negocio.</p>
+          <p>Entendemos el proceso actual, riesgos, accesos y definimos el objetivo de negocio prioritario.</p>
         </article>
-        <article class="card">
-          <div class="step-num">2</div>
+        
+        <article class="timeline-step">
+          <div class="step-badge">2</div>
           <h3>Propuesta (48h)</h3>
-          <p>Alcance cerrado, entregables concretos, costo fijo y criterios de aceptación.</p>
+          <p>Alcance perfectamente acotado, entregables concretos, costo fijo sin sorpresas y criterios de aceptación claros.</p>
         </article>
-        <article class="card">
-          <div class="step-num">3</div>
+        
+        <article class="timeline-step">
+          <div class="step-badge">3</div>
           <h3>Ejecución</h3>
-          <p>Desarrollo iterativo, integración, validación con usuarios y ajustes.</p>
+          <p>Desarrollo iterativo y transparente, integración con tu entorno, validación con usuarios clave y ajustes rápidos.</p>
         </article>
-        <article class="card">
-          <div class="step-num">4</div>
+        
+        <article class="timeline-step">
+          <div class="step-badge">4</div>
           <h3>Operación</h3>
-          <p>Go-live con handover, alertas y documentación operable para continuidad.</p>
+          <p>Go-live controlado con handover completo al equipo interno, alertas en producción y documentación operativa.</p>
         </article>
       </div>
     </section>
 
     <section id="nosotros" class="section">
-      <h2>Quiénes somos</h2>
+      <h2 class="section-title">Quiénes somos</h2>
+      <p class="section-subtitle">Entendemos a fondo el dolor operativo de las corporaciones. Venimos de liderar equipos de datos y operaciones en entornos complejos, por lo que no ofrecemos teoría, sino soluciones prácticas que operan de verdad.</p>
+      
       <div class="profiles">
-        <article class="card">
-          <h3>Socio 1</h3>
-          <p>Perfil senior en datos, automatización y productos analíticos en entornos corporativos.</p>
-          <p style="margin-top:8px;"><a href="#" aria-label="LinkedIn socio 1">LinkedIn</a></p>
+        <article class="card profile-card">
+          <div class="profile-avatar-wrapper">
+            <div class="profile-avatar">ED</div>
+          </div>
+          <div class="profile-info">
+            <h3>Ezequiel David</h3>
+            <div class="profile-role">Co-Founder & Tech Lead</div>
+            <p>Perfil senior especialista en infraestructura de datos, automatización de procesos complejos y arquitectura de productos analíticos en el ámbito corporativo y fintech.</p>
+            <a href="https://linkedin.com/in/ezequiel-david" target="_blank" rel="noopener noreferrer" class="linkedin-badge" aria-label="LinkedIn Ezequiel David">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+              <span>LinkedIn</span>
+            </a>
+          </div>
         </article>
-        <article class="card">
-          <h3>Socio 2</h3>
-          <p>Perfil senior en operación, BI y ejecución de iniciativas con foco en impacto y estabilidad.</p>
-          <p style="margin-top:8px;"><a href="#" aria-label="LinkedIn socio 2">LinkedIn</a></p>
+        
+        <article class="card profile-card">
+          <div class="profile-avatar-wrapper">
+            <div class="profile-avatar">VM</div>
+          </div>
+          <div class="profile-info">
+            <h3>Victoria Ludmila Michel</h3>
+            <div class="profile-role">Co-Founder & Operations Lead</div>
+            <p>Perfil senior especialista en gestión de operaciones críticas, Business Intelligence estratégico y dirección de iniciativas tecnológicas orientadas a la estabilidad operativa.</p>
+            <a href="https://linkedin.com/in/victoria-ludmila-michel" target="_blank" rel="noopener noreferrer" class="linkedin-badge" aria-label="LinkedIn Victoria Ludmila Michel">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+              <span>LinkedIn</span>
+            </a>
+          </div>
         </article>
       </div>
     </section>
 
     <section id="contacto" class="section">
-      <h2>Contacto</h2>
+      <h2 class="section-title">Conoce cómo podemos ayudarte a automatizar tus procesos y mejorar la eficiencia operativa</h2>
+      
       <div class="contact-grid">
-        <article class="card highlight">
+        <article class="card contact-info-card">
           <h3>¿Listo para un Quick Win?</h3>
-          <p>Si ya identificaste un proceso manual (Excel, carga de datos, reportes), podemos empezar de inmediato.</p>
-          <div class="actions" style="margin-top:14px;">
+          <p>Si ya identificaste un proceso manual e ineficiente (planillas Excel, carga manual de datos, confección de reportes), podemos empezar a optimizarlo de inmediato.</p>
+          <div class="actions" style="margin-top:20px;">
             <button data-cal-link="vectorpath/30min" data-cal-namespace="30min"
               data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}' class="btn btn-primary"
-              style="border:none;">Agendar reunión</button>
-            <a href="mailto:hola@vectorpath.org" class="btn btn-outline">Escribir por email</a>
+              style="border:none;">
+              <span>Agendar reunión</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+            </button>
+            <a href="mailto:hola@vectorpath.org" class="btn btn-outline">
+              <span>Escribir por email</span>
+            </a>
           </div>
-          <div class="contact-list">
-            <span>Email: <a href="mailto:hola@vectorpath.org">hola@vectorpath.org</a></span>
-            <span>También podés ver el formato completo en <a href="/presentacion.html">nuestra presentación</a>.</span>
+          <div class="contact-details">
+            <div>Email: <a href="mailto:hola@vectorpath.org">hola@vectorpath.org</a></div>
           </div>
         </article>
 
-        <article class="card">
-          <h3>Contanos tu caso</h3>
+        <article class="card form-wrapper">
+          <h3 style="margin-top: 0; font-size: 20px; font-weight: 700; margin-bottom: 20px;">Contanos tu caso</h3>
           <form class="form" action="mailto:hola@vectorpath.org" method="post" enctype="text/plain">
-            <input type="text" name="nombre" placeholder="Nombre" required>
-            <input type="email" name="email" placeholder="Email" required>
-            <textarea name="mensaje" placeholder="¿Qué proceso querés automatizar?" required></textarea>
-            <button type="submit" class="btn btn-outline">Enviar consulta</button>
+            <div class="form-group">
+              <label for="nombre">Nombre completo</label>
+              <input type="text" id="nombre" name="nombre" class="form-input" placeholder="Ej. Carlos Pérez" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="email">Email corporativo</label>
+              <input type="email" id="email" name="email" class="form-input" placeholder="carlos@empresa.com" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="mensaje">¿Qué proceso quieres automatizar?</label>
+              <textarea id="mensaje" name="mensaje" class="form-input" placeholder="Describe brevemente el proceso manual actual, las horas aproximadas que consume o los sistemas involucrados..." required></textarea>
+            </div>
+            
+            <button type="submit" class="btn btn-primary" style="width: 100%; border: none; margin-top: 8px;">
+              <span>Enviar consulta</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+            </button>
           </form>
         </article>
       </div>
     </section>
 
     <footer class="footer">
-      <span>© Vector Consulting</span>
+      <span>© Vector Path</span>
       <span>Operación primero · Resultados medibles</span>
     </footer>
   </main>
