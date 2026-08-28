@@ -1359,25 +1359,31 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: var(--bg);
+      background: var(--paper);
       border: 1px solid var(--line);
-      padding: 8px 14px;
-      border-radius: 12px;
+      padding: 8px 13px;
+      border-radius: 10px;
       font-size: 13px;
       font-weight: 600;
       color: var(--text);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
       transition: all 0.2s ease;
+      cursor: default;
+      user-select: none;
     }
     
     .tech-badge-item:hover {
-      border-color: var(--accent);
+      border-color: rgba(37, 99, 235, 0.35);
       background: var(--accent-soft);
       transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.08);
     }
     
     .tech-badge-item svg {
-      width: 16px;
-      height: 16px;
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      display: block;
     }
 
     /* AJAX Success State styling */
@@ -1625,7 +1631,7 @@
             
             <div class="calc-group" style="margin-top: 30px;">
               <div class="calc-label-row">
-                <span class="calc-label">Costo estimado por hora de analista (USD)</span>
+                <span class="calc-label">Costo estimado por hora de analista en USD</span>
                 <span class="calc-value" id="rate-display">30 USD</span>
               </div>
               <input type="range" id="input-rate" min="10" max="50" value="30" class="calc-slider">
@@ -1649,7 +1655,7 @@
               <div class="result-box savings-box">
                 <span class="result-label">Ahorro potencial con automatización</span>
                 <span class="result-value highlight-green" id="result-savings">21.060 USD</span>
-                <span class="savings-percentage">~90% de eficiencia recuperada</span>
+                <span class="savings-percentage">90% de eficiencia recuperada</span>
               </div>
               
               <a href="#contacto" class="btn btn-primary" style="width: 100%; margin-top: 15px; border: none;">
@@ -1699,34 +1705,79 @@
         <article class="card">
           <h3>Stack técnico</h3>
           <ul class="stack-list" style="margin-bottom: 24px;">
-            <li><strong>Core Dev</strong>: SQL estructurado, scripts robustos en Python y JavaScript (Node.js).</li>
+            <li><strong>Core Dev</strong>: SQL estructurado, scripts en Python y JavaScript con Node.js.</li>
             <li><strong>Visualización</strong>: Power BI avanzado, Tableau, Looker Studio e integración con SQL Server.</li>
             <li><strong>Arquitectura</strong>: Pipelines ETL, consumo y publicación de APIs, microservicios, RPA e IA aplicada.</li>
           </ul>
           <div class="tech-badges-grid">
-            <span class="tech-badge-item">
-              <svg viewBox="0 0 24 24" fill="currentColor" style="color: #3776AB; width: 16px; height: 16px;"><path d="M14.25.18l.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26-.02.2-.08.13-.1.1-.15.06-.2.03h-2c-.3 0-.6-.05-.88-.13a1.76 1.76 0 01-.63-.38 1.48 1.48 0 01-.4-.57c-.1-.23-.15-.49-.15-.76v-.5c0-.28-.05-.55-.16-.8a1.9 1.9 0 00-.45-.63 2.1 2.1 0 00-.7-.4c-.3-.1-.63-.14-.97-.14h-1.5c-.32 0-.64.04-.94.13a2.15 2.15 0 00-.78.4 1.9 1.9 0 00-.5.64 2 2 0 00-.18.8v.5c0 .28-.06.54-.17.79a1.6 1.6 0 01-.48.6 1.8 1.8 0 01-.71.36c-.32.08-.66.12-1 .12h-2c-.06 0-.1-.02-.15-.05l-.11-.1-.06-.13a1 1 0 01-.02-.2v-.26c.02-.1.05-.2.1-.3l.16-.33.24-.34.34-.34.45-.32.58-.3.73-.26.9-.2.83-.09h1.66c.28 0 .56.03.83.09zM4.25 7.18l.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26-.02.2-.08.13-.1.1-.15.06-.2.03h-2c-.3 0-.6-.05-.88-.13a1.76 1.76 0 01-.63-.38 1.48 1.48 0 01-.4-.57c-.1-.23-.15-.49-.15-.76v-.5c0-.28-.05-.55-.16-.8a1.9 1.9 0 00-.45-.63 2.1 2.1 0 00-.7-.4c-.3-.1-.63-.14-.97-.14H1.5c-.32 0-.64.04-.94.13a2.15 2.15 0 00-.78.4 1.9 1.9 0 00-.5.64 2 2 0 00-.18.8v.5c0 .28-.06.54-.17.79a1.6 1.6 0 01-.48.6 1.8 1.8 0 01-.71.36c-.32.08-.66.12-1 .12h-2c-.06 0-.1-.02-.15-.05l-.11-.1-.06-.13a1 1 0 01-.02-.2v-.26c.02-.1.05-.2.1-.3l.16-.33.24-.34.34-.34.45-.32.58-.3.73-.26.9-.2.83-.09h1.66c.28 0 .56.03.83.09zM12 24a6 6 0 110-12 6 6 0 010 12z"/></svg>
+            <span class="tech-badge-item" title="Python">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none">
+                <path d="M11.91 2c-4.94 0-4.63 2.14-4.63 2.14l.01 2.22h4.72v.67H5.34S2 6.64 2 11.6c0 4.95 2.91 4.77 2.91 4.77h1.74v-2.44s-.09-2.91 2.87-2.91h4.91s2.77.04 2.77-2.7V4.71S17.47 2 11.91 2zm-2.58 1.48a.9.9 0 110 1.8.9.9 0 010-1.8z" fill="#3776AB"/>
+                <path d="M12.09 22c4.94 0 4.63-2.14 4.63-2.14l-.01-2.22H12v-.67h6.66S22 17.36 22 12.4c0-4.95-2.91-4.77-2.91-4.77h-1.74v2.44s.09 2.91-2.87 2.91H9.57s-2.77-.04-2.77 2.7v4.21S6.53 22 12.09 22zm2.58-1.48a.9.9 0 110-1.8.9.9 0 010 1.8z" fill="#FFD438"/>
+              </svg>
               <span>Python</span>
             </span>
-            <span class="tech-badge-item">
-              <svg viewBox="0 0 24 24" fill="currentColor" style="color: #339933; width: 16px; height: 16px;"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zm5.556 16.488a.336.336 0 01-.168.291c-.443.255-1.127.502-1.848.502-1.92 0-3.354-1.258-3.354-3.41 0-2.28 1.455-3.568 3.498-3.568.683 0 1.282.196 1.64.397.13.072.18.232.115.367l-.464.96c-.053.111-.177.169-.294.127a3.29 3.29 0 00-1.02-.196c-1.157 0-1.81.716-1.81 1.841 0 1.057.653 1.764 1.79 1.764.444 0 .809-.082.994-.154.067-.026.143-.01.196.041.053.051.071.128.05.197l-.145.471z"/></svg>
+            <span class="tech-badge-item" title="Node.js">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none">
+                <path d="M12 2L3 7.2v9.6L12 22l9-5.2V7.2L12 2z" fill="#339933" fill-opacity="0.12" stroke="#339933" stroke-width="1.8" stroke-linejoin="round"/>
+                <path d="M12 6.5L6.5 9.7v4.6L12 17.5l5.5-3.2V9.7L12 6.5z" fill="#339933"/>
+              </svg>
               <span>Node.js</span>
             </span>
-            <span class="tech-badge-item">
-              <svg viewBox="0 0 24 24" fill="currentColor" style="color: #F2C811; width: 16px; height: 16px;"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm4.5 16.5H15l-1.5-3H12v3H10.5V7.5H13c1.5 0 2.5 1 2.5 2.5 0 1.2-.8 2-1.8 2.3l1.8 4.2zm-1.5-6.5c0-.7-.5-1.2-1.2-1.2h-1.3V12h1.3c.7 0 1.2-.5 1.2-1.2v-.8z"/></svg>
+            <span class="tech-badge-item" title="Power BI">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none">
+                <rect x="3" y="11" width="4.5" height="10" rx="1.5" fill="#E67E22"/>
+                <rect x="9.75" y="6.5" width="4.5" height="14.5" rx="1.5" fill="#F39C12"/>
+                <rect x="16.5" y="2.5" width="4.5" height="18.5" rx="1.5" fill="#F1C40F"/>
+              </svg>
               <span>Power BI</span>
             </span>
-            <span class="tech-badge-item">
-              <svg viewBox="0 0 24 24" fill="currentColor" style="color: #336791; width: 16px; height: 16px;"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm1.5 15.5h-3V14h3v1.5zm0-3h-3v-5h3v5z"/></svg>
-              <span>SQL Server</span>
+            <span class="tech-badge-item" title="Looker Studio">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none">
+                <rect x="3" y="3" width="7" height="18" rx="2" fill="#4285F4"/>
+                <circle cx="17.5" cy="6.5" r="3.5" fill="#34A853"/>
+                <rect x="14" y="13" width="7" height="8" rx="2" fill="#FBBC05"/>
+              </svg>
+              <span>Looker Studio</span>
             </span>
-            <span class="tech-badge-item">
-              <svg viewBox="0 0 24 24" fill="currentColor" style="color: #1A1523; width: 16px; height: 16px;"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm3.5 13.5h-1.2c-.3 1-.8 1.8-1.5 2.5l.8.8-1.1 1.1-.8-.8c-.7.7-1.5 1.2-2.5 1.5V20H8v-1.4c-1-.3-1.8-.8-2.5-1.5l-.8.8-1.1-1.1.8-.8c-.7-.7-1.2-1.5-1.5-2.5H1.5V12h1.4c.3-1 .8-1.8 1.5-2.5l-.8-.8 1.1-1.1.8.8c.7-.7 1.5-1.2 2.5-1.5V5.5H9v1.4c1 .3 1.8.8 2.5 1.5l.8-.8 1.1 1.1-.8.8c.7.7 1.2 1.5 1.5 2.5h1.4v1.5z"/></svg>
+            <span class="tech-badge-item" title="SQL Server & PostgreSQL">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none">
+                <ellipse cx="12" cy="5.5" rx="8" ry="3" fill="#336791" fill-opacity="0.2" stroke="#336791" stroke-width="1.8"/>
+                <path d="M4 5.5v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6" stroke="#336791" stroke-width="1.8"/>
+                <path d="M4 11.5v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6" stroke="#336791" stroke-width="1.8"/>
+              </svg>
+              <span>SQL</span>
+            </span>
+            <span class="tech-badge-item" title="Make">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none">
+                <rect width="24" height="24" rx="6" fill="#6E3FF3" fill-opacity="0.12"/>
+                <path d="M5 18V6l4.5 6L14 6v12" stroke="#6E3FF3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M14 12h5" stroke="#6E3FF3" stroke-width="2" stroke-linecap="round"/>
+                <circle cx="19" cy="12" r="1.5" fill="#6E3FF3"/>
+              </svg>
               <span>Make</span>
             </span>
-            <span class="tech-badge-item">
-              <svg viewBox="0 0 24 24" fill="currentColor" style="color: #FF4F00; width: 16px; height: 16px;"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm3 14H9v-1h6v1zm0-3H9v-1h6v1zm0-3H9V7h6v1z"/></svg>
+            <span class="tech-badge-item" title="n8n">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none">
+                <rect x="2" y="4.5" width="6.5" height="6.5" rx="2" fill="#EA4B71"/>
+                <rect x="15.5" y="4.5" width="6.5" height="6.5" rx="2" fill="#EA4B71"/>
+                <rect x="8.75" y="13" width="6.5" height="6.5" rx="2" fill="#FF6D5A"/>
+                <path d="M8.5 7.75h7M5.25 11v2.5a2 2 0 002 2h1.5M18.75 11v2.5a2 2 0 01-2 2h-1.5" stroke="#EA4B71" stroke-width="1.8" stroke-linecap="round"/>
+              </svg>
+              <span>n8n</span>
+            </span>
+            <span class="tech-badge-item" title="Zapier">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none">
+                <path d="M12 2.5v19M2.5 12h19M5.3 5.3l13.4 13.4M18.7 5.3L5.3 18.7" stroke="#FF4F00" stroke-width="2.8" stroke-linecap="round"/>
+              </svg>
               <span>Zapier</span>
+            </span>
+            <span class="tech-badge-item" title="IA & Agentes Inteligentes">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none">
+                <path d="M12 2L14.4 8.6L21 11L14.4 13.4L12 20L9.6 13.4L3 11L9.6 8.6L12 2Z" fill="#10A37F" fill-opacity="0.2" stroke="#10A37F" stroke-width="1.8" stroke-linejoin="round"/>
+                <path d="M19 17l1 2.5L22.5 20.5L20 21.5L19 24L18 21.5L15.5 20.5L18 19.5L19 17Z" fill="#10A37F"/>
+              </svg>
+              <span>IA & Agentes</span>
             </span>
           </div>
         </article>
@@ -1740,13 +1791,13 @@
       <div class="timeline-container">
         <article class="timeline-step">
           <div class="step-badge">1</div>
-          <h3>Kickoff (45m)</h3>
+          <h3>Kickoff de 45 minutos</h3>
           <p>Entendemos el proceso actual, riesgos, accesos y definimos el objetivo de negocio prioritario.</p>
         </article>
         
         <article class="timeline-step">
           <div class="step-badge">2</div>
-          <h3>Propuesta (48h)</h3>
+          <h3>Propuesta en 48 horas</h3>
           <p>Alcance perfectamente acotado, entregables concretos, costo fijo sin sorpresas y criterios de aceptación claros.</p>
         </article>
         
@@ -1826,7 +1877,7 @@
             <svg class="faq-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
           </button>
           <div class="faq-content">
-            <p>Trabajamos bajo el principio de <strong>seguridad en origen</strong>: implementamos los scripts, automatizaciones y bases de datos directamente dentro de tu entorno corporativo (Google Workspace, AWS, Azure, GCP o servidores locales) mediante accesos acotados y controlados. No almacenamos tus datos en servidores externos y firmamos acuerdos de confidencialidad (NDA) antes del Kickoff.</p>
+            <p>Trabajamos bajo el principio de <strong>seguridad en origen</strong>: implementamos los scripts, automatizaciones y bases de datos directamente dentro de tu entorno corporativo como Google Workspace, AWS, Azure, GCP o servidores locales mediante accesos acotados y controlados. No almacenamos tus datos en servidores externos y firmamos acuerdos de confidencialidad NDA antes del Kickoff.</p>
           </div>
         </div>
 
@@ -1836,13 +1887,13 @@
             <svg class="faq-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
           </button>
           <div class="faq-content">
-            <p>Somos agnósticos al stack tecnológico. Seleccionamos la herramienta que mejor resuelva tu problema con el menor costo de mantenimiento. Entre nuestras tecnologías habituales se encuentran: Python, SQL (PostgreSQL, SQL Server), Node.js, Power BI, Looker Studio, Make, Zapier, Google Apps Script e integraciones nativas con las APIs oficiales de OpenAI, Anthropic y Google Gemini.</p>
+            <p>Somos agnósticos al stack tecnológico. Seleccionamos la herramienta que mejor resuelva tu problema con el menor costo de mantenimiento. Entre nuestras tecnologías habituales se encuentran: Python, SQL como PostgreSQL y SQL Server, Node.js, Power BI, Looker Studio, Make, Zapier, Google Apps Script e integraciones nativas con las APIs oficiales de OpenAI, Anthropic y Google Gemini.</p>
           </div>
         </div>
 
         <div class="faq-item">
           <button class="faq-trigger">
-            <span>¿Cómo funciona el esquema de "costo fijo sin sorpresas"?</span>
+            <span>¿Cómo funciona el esquema de costo fijo sin sorpresas?</span>
             <svg class="faq-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
           </button>
           <div class="faq-content">
@@ -1856,7 +1907,7 @@
             <svg class="faq-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
           </button>
           <div class="faq-content">
-            <p>Todas nuestras soluciones incluyen un proceso de handover (transferencia) detallado a tu equipo y documentación operativa (runbooks). Además, configuramos alertas automatizadas por Slack o correo electrónico para que si alguna automatización falla, tu equipo lo sepa al instante. Ofrecemos también planes de mantenimiento mensual opcionales si prefieres que nosotros monitoreemos las operaciones de forma activa.</p>
+            <p>Todas nuestras soluciones incluyen un proceso de transferencia detallado a tu equipo y documentación operativa con runbooks. Además, configuramos alertas automatizadas por Slack o correo electrónico para que si alguna automatización falla, tu equipo lo sepa al instante. Ofrecemos también planes de mantenimiento mensual opcionales si prefieres que nosotros monitoreemos las operaciones de forma activa.</p>
           </div>
         </div>
       </div>
@@ -1867,8 +1918,8 @@
       
       <div class="contact-grid">
         <article class="card contact-info-card">
-          <h3>¿Listo para un Quick Win?</h3>
-          <p>Si ya identificaste un proceso manual e ineficiente (planillas Excel, carga manual de datos, confección de reportes), podemos empezar a optimizarlo de inmediato.</p>
+          <h3>¿Listo para comenzar?</h3>
+          <p>Si ya identificaste un proceso manual e ineficiente como planillas Excel, carga manual de datos o confección de reportes, podemos empezar a optimizarlo de inmediato.</p>
           <div class="actions" style="margin-top:20px;">
             <button data-cal-link="vectorpath/30min" data-cal-namespace="30min"
               data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}' class="btn btn-primary"
@@ -1920,7 +1971,7 @@
           <h4 style="font-size: 14px; font-weight: 700; color: var(--text); margin: 0 0 12px 0;">Operación Global</h4>
           <ul style="list-style: none; padding: 0; margin: 0; font-size: 13px; color: var(--muted); line-height: 1.8;">
             <li>📍 Buenos Aires, Argentina</li>
-            <li>🌐 Zona Horaria: GMT-3 (Con cobertura internacional)</li>
+            <li>🌐 Zona Horaria: GMT-3 con cobertura internacional</li>
             <li>🗣️ Idiomas de trabajo: Español, Inglés, Portugués</li>
           </ul>
         </div>
