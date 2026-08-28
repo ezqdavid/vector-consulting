@@ -1,6 +1,6 @@
 {
   "name": "vector-consulting",
-  "description": "Imported from GitHub: ezqdavid/vector-consulting",
+  "description": "Consultoría boutique para operación, reporting automatizado y procesos con IA aplicada.",
   "majorCapabilities": [
     "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
   ]
